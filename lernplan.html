@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c3527">
+<title>A1 背词计划 · 1686 词 · 91 天</title>
+<link rel="stylesheet" href="site.css">
+<style>
+  :root{
+    --bg:#f7f2e7; --card:#fffdf8; --ink:#1b2420; --muted:#5f6d66; --faint:#95a09a;
+    --line:#e3dbc9; --green:#0f4a35; --green2:#1a6b4d; --gold:#c98a12; --red:#b23a3a;
+    --der:#2b6cb0; --das:#2f855a; --die:#b23a3a;
+    --shadow:0 1px 2px rgba(27,36,32,.05),0 14px 34px -22px rgba(27,36,32,.4);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+    font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+  header.hero{background:linear-gradient(150deg,#0a2e22 0%,#0f4a35 55%,#17624a 100%);color:#f2eee3;padding:34px 0 54px;position:relative;overflow:hidden}
+  header.hero::after{content:"";position:absolute;right:-90px;bottom:-160px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%)}
+  .eyebrow{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#a9c8b7;margin:0 0 10px}
+  h1{margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC",serif;
+     font-size:clamp(38px,6.2vw,60px);font-weight:600;letter-spacing:-.02em;line-height:1.03}
+  .hero p.lead{margin:12px 0 0;color:#cfe0d6;font-size:14.5px;max-width:40em}
+  .hero p.lead b{color:#fff}
+  .metaline{margin-top:18px;display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:#a9c8b7}
+  .metaline b{color:#f0c75e}
+
+  .progress{background:#fffdf8;border:1px solid var(--line);border-radius:14px;padding:13px 18px;margin:-26px auto 14px;max-width:996px;position:relative;z-index:2;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow)}
+  .progress .bar{flex:1;height:8px;background:#eee6d5;border-radius:99px;overflow:hidden}
+  .progress .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green2),#3fa574);border-radius:99px;transition:width .3s}
+  .progress b{font-size:13px;color:var(--green)}
+  .progress small{color:var(--faint);font-size:11.5px;white-space:nowrap}
+
+  main{padding:24px 0 70px}
+  section{margin:0 0 42px}
+  .sec{display:flex;align-items:baseline;gap:12px;margin:0 0 14px;border-bottom:1px solid var(--line);padding-bottom:8px}
+  .sec h2{margin:0;font-family:"Iowan Old Style",Georgia,"Songti SC",serif;font-size:23px;font-weight:600}
+  .sec .note{margin-left:auto;font-size:12px;color:var(--faint)}
+
+  .daily{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .d{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 16px;border-top:3px solid var(--c)}
+  .d .t{font-family:"Iowan Old Style",Georgia,serif;font-size:11px;color:var(--c);font-weight:600}
+  .d h3{margin:4px 0 4px;font-size:15px}
+  .d p{margin:0;font-size:11.5px;color:var(--muted)}
+
+  .unit{background:var(--card);border:1px solid var(--line);border-radius:15px;margin:0 0 16px;overflow:hidden;box-shadow:var(--shadow)}
+  .unit-h{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fbf7ed;border-bottom:1px solid #eee7d8;flex-wrap:wrap}
+  .unit-h .k{font-family:"Iowan Old Style",Georgia,serif;font-size:18px;font-weight:600;color:var(--green)}
+  .unit-h .t{font-size:13px;font-weight:600}
+  .unit-h .n{margin-left:auto;font-size:11px;color:var(--faint)}
+  .unit-h a{font-size:11px;color:var(--green2);text-decoration:none;border-bottom:1px solid #bcd8c8}
+
+  .dayrow{display:grid;grid-template-columns:70px 1fr 1.25fr 58px;gap:10px;align-items:center;padding:9px 16px;border-bottom:1px solid #efe8d9}
+  .dayrow:last-child{border-bottom:0}
+  .dayrow .no{font-family:"Iowan Old Style",Georgia,serif;font-size:12px;color:var(--green)}
+  .dayrow .w{font-size:12.5px;font-weight:600}
+  .dayrow .w span{display:block;font-weight:400;font-size:10.5px;color:var(--faint)}
+  .dayrow .s{font-size:12px;color:#3d4a44}
+  .dayrow .s b{font-weight:600}
+  .dayrow .s i{display:block;font-style:normal;font-size:10.5px;color:var(--faint)}
+  .dayrow label{display:flex;justify-content:flex-end}
+  .dayrow input{width:17px;height:17px;accent-color:var(--green2)}
+  .dayrow.done .w,.dayrow.done .s{opacity:.45}
+  .dayrow.done .w{text-decoration:line-through}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .speak{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 17px;box-shadow:var(--shadow)}
+  .speak h3{margin:0 0 8px;font-size:14px;color:var(--green)}
+  .speak .line{display:flex;gap:9px;padding:6px 0;border-bottom:1px dashed #e8e0ce;align-items:flex-start}
+  .speak .line:last-child{border-bottom:0}
+  .speak .line button{flex:0 0 24px;width:24px;height:24px;border-radius:50%;border:1px solid #ddd2bb;background:#fffdf8;cursor:pointer;color:#7a857e;font-size:11px;padding:0;margin-top:1px}
+  .speak .line button:hover{border-color:var(--green);color:var(--green)}
+  .speak .line p{margin:0;font-size:12.5px}
+  .speak .line p i{display:block;font-style:normal;font-size:10.5px;color:var(--faint)}
+
+  .tipbox{background:#fbf7ed;border:1px solid var(--line);border-radius:13px;padding:14px 18px;font-size:12.5px;color:var(--muted);margin-top:14px}
+  .tipbox b{color:var(--green)}
+
+  footer{border-top:1px solid var(--line);padding:22px 0 46px;color:var(--faint);font-size:12px}
+  footer a{color:var(--green2);text-decoration:none;border-bottom:1px solid #bcd8c8}
+
+  @media (max-width:820px){
+    .daily{grid-template-columns:1fr 1fr}
+    .cards{grid-template-columns:1fr}
+    .dayrow{grid-template-columns:52px 1fr 46px;padding:9px 12px}
+    .dayrow .s{grid-column:2/-1;font-size:11.5px}
+    .dayrow label{grid-column:3;grid-row:1}
+    .unit-h .n{display:none}
+  }
+  @media (max-width:520px){
+    .daily{grid-template-columns:1fr}
+    main{padding-top:26px}
+  }
+</style>
+</head>
+<body>
+<div class="sitebar">
+  <a class="brand" href="lernen.html">Deutsch A1</a>
+  <nav>
+    <a href="lernen.html">学习中心</a>
+    <a href="vocab.html">词汇</a>
+    <a class="on" href="lernplan.html">背词计划</a>
+    <a href="sprechen.html">口语</a>
+    <a href="a1-verben.html">不规则动词</a>
+    <a href="plan.html">5 天急救</a>
+    <a href="12-wochen.html">12 周计划</a>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Wortschatz A1 · 1–12</p>
+    <h1>91 天背完 A1</h1>
+    <p class="lead">全册 <b>1686</b> 个词条，按单元拆成 <b>91 天</b>；每天 <b>20 个新词</b> + 复习 + <b>1 句口语</b>。先认得，再会用。</p>
+    <div class="metaline">
+      <span>每天 <b>35 分钟</b></span>
+      <span>重点词 <b>465</b> 个</span>
+      <span>口语 <b>72 句</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="progress">
+  <b id="pct">0%</b>
+  <div class="bar"><i id="bar"></i></div>
+  <small id="ptext">0 / 91 天完成</small>
+</div>
+
+<main class="wrap">
+
+  <section>
+    <div class="sec"><h2>每天怎么背</h2><span class="note">固定 35 分钟，别贪多</span></div>
+    <div class="daily">
+      <div class="d" style="--c:var(--der)"><div class="t">10′</div><h3>复习</h3><p>昨天 20 词 + 错词本；只看德语说中文。</p></div>
+      <div class="d" style="--c:var(--gold)"><div class="t">15′</div><h3>新词 20 个</h3><p>点词表里的单元，听发音，遮中文自测。</p></div>
+      <div class="d" style="--c:var(--green2)"><div class="t">5′</div><h3>口语 1 句</h3><p>今天的句子说 10 遍，录音回听一次。</p></div>
+      <div class="d" style="--c:var(--red)"><div class="t">5′</div><h3>写 2 句</h3><p>用今天 2 个新词，各写一句自己的话。</p></div>
+    </div>
+    <div class="tipbox"><b>规则：</b>当天没背完不要补到第二天，直接跳过——连续性比数量重要。每周日把本周 6 天的句子连起来说一遍。</div>
+  </section>
+
+  <section id="plan">
+    <div class="sec"><h2>91 天计划</h2><span class="note">按单元顺序，勾选会保存</span></div>
+    <div id="planList"></div>
+  </section>
+
+  <section id="speak">
+    <div class="sec"><h2>口语卡 · 12 张</h2><span class="note">点小喇叭听发音（浏览器 TTS）</span></div>
+    <div class="cards" id="speakCards"></div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>这样用手机</h2></div>
+    <div class="tipbox">
+      1. 每天打开这一页，找到今天的 Day，勾掉；<br>
+      2. 点单元标题右边的「词表」，进入该单元词表，只背今天这 20 个；<br>
+      3. 睡前把今天的口语句说 3 遍，不看稿；<br>
+      4. 周日把本周 6 句连起来说 30 秒，录音存着，月底回听。
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  词表：Netzwerk neu A1 Kursbuch 第 1–12 单元 · <a href="vocab.html">完整词汇手册</a> · <a href="a1-verben.html">不规则动词</a><br>
+  进度保存在本机浏览器；换设备不同步。
+</footer>
+
+<script>
+const UNITS = [
+ {u:1,n:169,k:18,t:"Guten Tag! · 问候与介绍",s:[
+  ["Ich heiße Anna und komme aus China.","我叫安娜，来自中国。"],
+  ["Ich wohne in Berlin.","我住在柏林。"],
+  ["Ich spreche Chinesisch, Deutsch und Englisch.","我说中文、德语和英语。"],
+  ["Wie geht es dir? — Danke, gut.","你好吗？——谢谢，很好。"],
+  ["Das ist mein Freund.","这是我的朋友。"],
+  ["Meine Telefonnummer ist null eins sieben drei.","我的电话是 0173。"]]},
+ {u:2,n:202,k:21,t:"Freunde und Kollegen · 爱好与职业",s:[
+  ["Ich arbeite als Lehrer.","我当老师。"],
+  ["Ich habe am Wochenende frei.","我周末有空。"],
+  ["Ich lese gern Bücher und höre gern Musik.","我喜欢读书、听音乐。"],
+  ["Wann hast du Zeit?","你什么时候有空？"],
+  ["Ich fahre gern Fahrrad.","我喜欢骑自行车。"],
+  ["Am Montag gehe ich ins Kino.","周一我去看电影。"]]},
+ {u:3,n:142,k:9,t:"In Hamburg · 城市与交通",s:[
+  ["Entschuldigung, wo ist der Bahnhof?","请问，火车站在哪里？"],
+  ["Gehen Sie geradeaus und dann rechts.","一直走，然后右转。"],
+  ["Ich fahre mit dem Bus zur Arbeit.","我坐公交车上班。"],
+  ["Wie komme ich zum Museum?","我怎么去博物馆？"],
+  ["Die Straße ist sehr lang.","这条街很长。"],
+  ["Im Sommer fahre ich ans Meer.","夏天我去海边。"]]},
+ {u:4,n:198,k:29,t:"Guten Appetit! · 食物与购物",s:[
+  ["Ich möchte einen Kaffee, bitte.","我要一杯咖啡。"],
+  ["Was kostet das?","这个多少钱？"],
+  ["Ich kaufe Brot und Käse.","我买面包和奶酪。"],
+  ["Ich esse gern Gemüse.","我喜欢吃蔬菜。"],
+  ["Das schmeckt sehr gut.","这很好吃。"],
+  ["Haben Sie noch Äpfel?","您还有苹果吗？"]]},
+ {u:5,n:121,k:57,t:"Alltag und Familie · 日常与家庭",s:[
+  ["Ich stehe um sieben Uhr auf.","我七点起床。"],
+  ["Ich muss heute arbeiten.","我今天必须工作。"],
+  ["Kannst du am Freitag kommen?","你周五能来吗？"],
+  ["Ich habe keine Zeit.","我没有时间。"],
+  ["Meine Familie wohnt in Shanghai.","我家住在上海。"],
+  ["Wir treffen uns um acht.","我们八点见。"]]},
+ {u:6,n:121,k:45,t:"Zeit mit Freunden · 时间与朋友",s:[
+  ["Ich habe am dritten Mai Geburtstag.","我五月三日生日。"],
+  ["Wir laden dich herzlich ein.","我们热情邀请你。"],
+  ["Kommst du am Samstag zur Party?","你周六来参加聚会吗？"],
+  ["Ich war gestern im Restaurant.","我昨天在餐馆。"],
+  ["Ich hatte viel Spaß.","我玩得很开心。"],
+  ["Viele Grüße aus Berlin.","来自柏林的问候。"]]},
+ {u:7,n:111,k:40,t:"Arbeitsalltag · 工作日常",s:[
+  ["Ich arbeite bei einer Firma in Hamburg.","我在汉堡一家公司工作。"],
+  ["Ich fahre mit dem Zug zur Arbeit.","我坐火车上班。"],
+  ["Kannst du mir bitte helfen?","你能帮我一下吗？"],
+  ["Das Buch gehört mir.","这本书是我的。"],
+  ["Nach der Arbeit gehe ich einkaufen.","下班后我去购物。"],
+  ["Ich spreche morgen mit meinem Chef.","我明天和老板谈。"]]},
+ {u:8,n:143,k:59,t:"Fit und gesund · 身体与健康",s:[
+  ["Ich fühle mich nicht gut.","我感觉不舒服。"],
+  ["Mein Kopf tut weh.","我头疼。"],
+  ["Du sollst mehr Wasser trinken.","你应该多喝水。"],
+  ["Ich darf heute nicht raus.","我今天不能出门。"],
+  ["Gehen Sie zum Arzt!","去看医生！"],
+  ["Gute Besserung!","祝你早日康复！"]]},
+ {u:9,n:119,k:54,t:"Meine Wohnung · 住房",s:[
+  ["Ich wohne in einer kleinen Wohnung.","我住在一间小公寓。"],
+  ["Die Wohnung hat zwei Zimmer.","这套房子有两个房间。"],
+  ["Der Schrank steht im Schlafzimmer.","衣柜在卧室里。"],
+  ["Die Miete ist zu teuer.","房租太贵了。"],
+  ["Ich stelle die Bücher ins Regal.","我把书放到书架上。"],
+  ["Im Wohnzimmer gibt es ein Sofa.","客厅里有一个沙发。"]]},
+ {u:10,n:95,k:32,t:"Studium und Beruf · 学习与职业",s:[
+  ["Ich habe Informatik studiert.","我学过计算机。"],
+  ["Ich habe zwei Jahre als Praktikant gearbeitet.","我做过两年实习生。"],
+  ["Ich bewerbe mich um eine Stelle.","我在申请一个职位。"],
+  ["Mein Traumjob ist Lehrer.","我的梦想职业是老师。"],
+  ["Ich kann gut mit Menschen arbeiten.","我擅长和人打交道。"],
+  ["Seit 2020 lerne ich Deutsch.","我从 2020 年开始学德语。"]]},
+ {u:11,n:134,k:50,t:"Kleidung und Einkaufen · 衣物与购物",s:[
+  ["Ich habe eine Jacke gekauft.","我买了一件夹克。"],
+  ["Das passt mir sehr gut.","这很适合我。"],
+  ["Die Farbe gefällt mir.","我喜欢这个颜色。"],
+  ["Wie viel kostet das Hemd?","这件衬衫多少钱？"],
+  ["Ich möchte das umtauschen.","我想换这个。"],
+  ["Die Schuhe sind zu klein.","这双鞋太小了。"]]},
+ {u:12,n:131,k:51,t:"Reisen · 旅行",s:[
+  ["Ich fahre im Sommer nach Deutschland.","我夏天去德国。"],
+  ["Ich habe schon ein Hotel gebucht.","我已经订了酒店。"],
+  ["Der Zug fährt um neun Uhr.","火车九点开。"],
+  ["Ich möchte eine Fahrkarte kaufen.","我想买一张票。"],
+  ["Wo ist der Bahnsteig?","站台在哪里？"],
+  ["Schöne Reise!","旅途愉快！"]]}
+];
+
+const KEYSTORE = 'a1_days_v1';
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem(KEYSTORE) || '{}'); } catch(e) { saved = {}; }
+let gday = 0, total = 0, boxes = [];
+
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function build(){
+  const plan = document.getElementById('planList');
+  let html = '';
+  UNITS.forEach(U => {
+    const days = Math.ceil(U.n / 20);
+    total += days;
+    html += '<div class="unit"><div class="unit-h"><span class="k">K'+U.u+'</span><span class="t">'+esc(U.t)+'</span>'+
+            '<span class="n">'+U.n+' 词 · 重点 '+U.k+' · '+days+' 天</span>'+
+            '<a href="vocab.html?u='+U.u+'">词表 →</a></div>';
+    for (let d = 1; d <= days; d++) {
+      gday++;
+      const start = (d-1)*20 + 1;
+      const end = Math.min(U.n, d*20);
+      const sent = U.s[(d-1) % U.s.length];
+      html += '<div class="dayrow" data-day="'+gday+'">'+
+        '<span class="no">Day '+gday+'</span>'+
+        '<span class="w">'+start+'–'+end+'<span>'+U.n+' 词中的第 '+d+'/'+days+' 天</span></span>'+
+        '<span class="s"><b>'+esc(sent[0])+'</b><i>'+esc(sent[1])+'</i></span>'+
+        '<label><input type="checkbox" data-d="'+gday+'"></label></div>';
+    }
+    html += '</div>';
+  });
+  plan.innerHTML = html;
+}
+
+function buildSpeak(){
+  const el = document.getElementById('speakCards');
+  el.innerHTML = UNITS.map(U =>
+    '<div class="speak"><h3>K'+U.u+' · '+esc(U.t.split(' · ')[1])+'</h3>'+
+    U.s.map(x => '<div class="line"><button data-say="'+esc(x[0])+'" aria-label="朗读">▶</button>'+
+      '<p>'+esc(x[0])+'<i>'+esc(x[1])+'</i></p></div>').join('')+'</div>'
+  ).join('');
+}
+
+function update(){
+  const done = boxes.filter(b => b.checked).length;
+  const pct = Math.round(done*100/total);
+  document.getElementById('pct').textContent = pct+'%';
+  document.getElementById('bar').style.width = pct+'%';
+  document.getElementById('ptext').textContent = done+' / '+total+' 天完成';
+}
+
+build();
+buildSpeak();
+boxes = [].slice.call(document.querySelectorAll('#planList input[type=checkbox]'));
+boxes.forEach(b => {
+  const d = b.getAttribute('data-d');
+  if (saved[d]) { b.checked = true; b.closest('.dayrow').classList.add('done'); }
+  b.addEventListener('change', () => {
+    saved[d] = b.checked;
+    b.closest('.dayrow').classList.toggle('done', b.checked);
+    localStorage.setItem(KEYSTORE, JSON.stringify(saved));
+    update();
+  });
+});
+update();
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-say]');
+  if (!b) return;
+  const text = b.getAttribute('data-say');
+  if (!('speechSynthesis' in window)) { alert('这个浏览器不支持朗读'); return; }
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'de-DE'; u.rate = 0.9;
+  speechSynthesis.cancel(); speechSynthesis.speak(u);
+});
+</script>
+</body>
+</html>

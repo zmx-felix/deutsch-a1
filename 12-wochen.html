@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c3527">
+<title>12 周德语计划 · 考后重建</title>
+<link rel="stylesheet" href="site.css">
+<style>
+  :root{
+    --bg:#f7f2e7; --card:#fffdf8; --ink:#1b2420; --muted:#5f6d66; --faint:#95a09a;
+    --line:#e3dbc9; --green:#0f4a35; --green2:#1a6b4d; --gold:#c98a12; --red:#b23a3a;
+    --der:#2b6cb0; --das:#2f855a; --die:#b23a3a;
+    --shadow:0 1px 2px rgba(27,36,32,.05),0 14px 34px -22px rgba(27,36,32,.4);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+    font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+  .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC",serif}
+
+  header.hero{background:linear-gradient(150deg,#0a2e22 0%,#0f4a35 55%,#17624a 100%);color:#f2eee3;padding:34px 0 56px;position:relative;overflow:hidden}
+  header.hero::after{content:"";position:absolute;right:-90px;bottom:-160px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.07),transparent 70%)}
+  .eyebrow{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#a9c8b7;margin:0 0 10px}
+  h1{margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC",serif;
+     font-size:clamp(40px,6.4vw,64px);font-weight:600;letter-spacing:-.02em;line-height:1.02}
+  .hero p.lead{margin:14px 0 0;color:#cfe0d6;font-size:15px;max-width:38em}
+  .hero p.lead b{color:#fff}
+  .metaline{margin-top:20px;display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:#a9c8b7}
+  .metaline b{color:#f0c75e}
+
+  .progress{background:#fffdf8;border:1px solid var(--line);border-radius:14px;padding:13px 18px;margin:-26px auto 18px;max-width:976px;position:relative;z-index:2;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow)}
+  .progress .bar{flex:1;height:8px;background:#eee6d5;border-radius:99px;overflow:hidden}
+  .progress .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green2),#3fa574);border-radius:99px;transition:width .3s}
+  .progress b{font-size:13px;color:var(--green)}
+  .progress small{color:var(--faint);font-size:11.5px;white-space:nowrap}
+
+  main{padding:22px 0 70px}
+  section{margin:0 0 44px;scroll-margin-top:20px}
+  .sec{display:flex;align-items:baseline;gap:12px;margin:0 0 14px;border-bottom:1px solid var(--line);padding-bottom:8px}
+  .sec h2{margin:0;font-family:"Iowan Old Style",Georgia,"Songti SC",serif;font-size:23px;font-weight:600}
+  .sec .note{margin-left:auto;font-size:12px;color:var(--faint)}
+
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .cards2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .card .k{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px}
+  .card h3{margin:0 0 6px;font-size:17px}
+  .card p{margin:0;font-size:13px;color:var(--muted)}
+  .card .big{font-family:"Iowan Old Style",Georgia,serif;font-size:46px;line-height:1;color:var(--green);margin-bottom:6px}
+
+  /* day timeline */
+  .day{display:grid;grid-template-columns:2.2fr 4.2fr 2.4fr 2.4fr;gap:8px}
+  .day .b{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;border-top:4px solid var(--c,var(--green))}
+  .day .b .t{font-family:"Iowan Old Style",Georgia,serif;font-size:11px;color:var(--c);font-weight:600}
+  .day .b h4{margin:4px 0;font-size:15px}
+  .day .b p{margin:0;font-size:11.5px;color:var(--muted)}
+
+  /* week rhythm */
+  .rhythm{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .rhythm .card ul{margin:8px 0 0;padding-left:16px}
+  .rhythm .card li{font-size:12.5px;margin:3px 0;color:var(--muted)}
+  .rhythm .key{font-size:10.5px;color:var(--gold);font-weight:600;margin-top:10px;display:block}
+
+  /* map */
+  .map{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .map .m{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;border-top:3px solid var(--c)}
+  .map .m .w{font-family:"Iowan Old Style",Georgia,serif;font-size:11px;color:var(--c);font-weight:600}
+  .map .m h4{margin:4px 0 6px;font-size:15px}
+  .map .m p{margin:0;font-size:11px;color:var(--muted)}
+
+  /* phase */
+  .phase{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:0 0 14px;box-shadow:var(--shadow);overflow:hidden}
+  .phase-h{display:flex;align-items:center;gap:12px;padding:12px 18px;background:#fbf7ed;border-bottom:1px solid #eee7d8;flex-wrap:wrap}
+  .phase-h .w{font-family:"Iowan Old Style",Georgia,serif;font-size:19px;font-weight:600;color:var(--c)}
+  .phase-h .n{font-size:13.5px;color:var(--ink);font-weight:600}
+  .phase-h .tip{margin-left:auto;font-size:11px;color:var(--muted)}
+  .phase-b{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .phase-b .cell{padding:14px 16px;border-right:1px solid #efe8d9}
+  .phase-b .cell:last-child{border-right:0}
+  .phase-b .l{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:4px}
+  .phase-b .v{font-size:12.5px;color:#3d4a44}
+
+  /* weeks table */
+  .weeks{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+  .week{display:grid;grid-template-columns:52px 1fr 1.1fr 130px;gap:10px;align-items:center;padding:10px 16px;border-bottom:1px solid #efe8d9}
+  .week:last-child{border-bottom:0}
+  .week .no{font-family:"Iowan Old Style",Georgia,serif;font-size:15px;color:var(--green)}
+  .week .f{font-size:13px;font-weight:600}
+  .week .g{font-size:11.5px;color:var(--muted)}
+  .week label{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--faint);cursor:pointer;justify-content:flex-end}
+  .week input{accent-color:var(--green2);width:16px;height:16px}
+  .week.done .f{color:#9aa39d;text-decoration:line-through}
+  .week.p1{border-left:3px solid var(--der)} .week.p2{border-left:3px solid var(--gold)}
+  .week.p3{border-left:3px solid var(--green2)} .week.p4{border-left:3px solid var(--red)}
+
+  /* rules grid */
+  .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:0 26px}
+  .rule{padding:12px 0;border-bottom:1px dashed #e4dccb;display:flex;gap:12px}
+  .rule .n{font-family:"Iowan Old Style",Georgia,serif;font-size:11px;color:var(--gold);font-weight:600;padding-top:3px}
+  .rule h4{margin:0 0 2px;font-size:14px}
+  .rule p{margin:0;font-size:12px;color:var(--muted)}
+
+  .quote{border-left:3px solid var(--gold);padding:10px 0 10px 14px;margin:18px 0 0;font-size:14px;color:var(--green);font-weight:600}
+
+  .pit{display:grid;grid-template-columns:repeat(2,1fr);gap:0 26px}
+  .pit .p{padding:10px 0;border-bottom:1px dashed #e4dccb;display:flex;gap:10px}
+  .pit .p .n{font-family:"Iowan Old Style",Georgia,serif;color:var(--red);font-size:11px;font-weight:600;padding-top:3px}
+  .pit .p h4{margin:0 0 2px;font-size:13.5px}
+  .pit .p p{margin:0;font-size:11.5px;color:var(--muted)}
+
+  .mats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .mat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:12px}
+  .mat .n{font-family:"Iowan Old Style",Georgia,serif;color:var(--green);font-size:11px;font-weight:600}
+  .mat b{font-size:13px;display:block}
+  .mat span{font-size:11.5px;color:var(--muted)}
+
+  #top{position:fixed;right:16px;bottom:18px;width:42px;height:42px;border-radius:50%;
+    border:1px solid #d8cfbc;background:#fffdf8;color:var(--green);font-size:17px;cursor:pointer;
+    box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s;z-index:80}
+  #top.on{opacity:1;pointer-events:auto}
+  footer{border-top:1px solid var(--line);padding:24px 0 50px;color:var(--faint);font-size:12px}
+  footer a{color:var(--green2);text-decoration:none;border-bottom:1px solid #bcd8c8}
+
+  @media (max-width:860px){
+    .cards3,.cards2,.day,.rhythm,.map,.phase-b,.pit,.mats{grid-template-columns:1fr}
+    .phase-b .cell{border-right:0;border-bottom:1px solid #efe8d9}
+    .week{grid-template-columns:40px 1fr 92px}
+    .week .g{display:none}
+    .day{gap:8px}
+    .rules{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="sitebar">
+  <a class="brand" href="lernen.html">Deutsch A1</a>
+  <nav>
+    <a href="lernen.html">学习中心</a>
+    <a href="vocab.html">词汇</a>
+    <a href="lernplan.html">背词计划</a>
+    <a href="sprechen.html">口语</a>
+    <a href="a1-verben.html">不规则动词</a>
+    <a href="plan.html">5 天急救</a>
+    <a class="on" href="12-wochen.html">12 周计划</a>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Nach der Prüfung · 12 Wochen</p>
+    <h1>12 Wochen</h1>
+    <p class="lead">德语扎实计划：<b>从 A1 收尾到敢开口</b>。每天 45 分钟，每周 5 小时；不追求背完，追求用得上。</p>
+    <div class="metaline">
+      <span>开始 <b>2026.11.18</b>（周三）</span>
+      <span>结束 <b>2027.02.10</b></span>
+      <span>约 <b>390</b> 个新词，其中 <b>150</b> 个会用</span>
+      <span id="countdown"></span>
+    </div>
+  </div>
+</header>
+
+<div class="progress">
+  <b id="pct">0%</b>
+  <div class="bar"><i id="bar"></i></div>
+  <small id="ptext">0 / 12 周完成</small>
+</div>
+
+<main class="wrap">
+
+  <section>
+    <div class="sec"><h2>三条腿，不是三个阶段</h2><span class="note">单词是燃料 · 语法是地图 · 输出是发动机</span></div>
+    <div class="cards3">
+      <div class="card"><div class="k">01 · Input</div><h3>输入</h3><p>每天 20 分钟听或读。材料只比你现在高一点点：课文音频、分级读物、慢速新闻。</p></div>
+      <div class="card"><div class="k">02 · Grammatik</div><h3>语法</h3><p>A1 只有 6 张表。懂 → 造句 → 改错；不要从头啃语法书。</p></div>
+      <div class="card"><div class="k">03 · Output</div><h3>输出</h3><p>每天 3 句；每周 1 次对话 + 1 篇短文。先敢说错，再说完美。</p></div>
+    </div>
+    <p class="quote">四件事同时转，才叫扎实。</p>
+  </section>
+
+  <section>
+    <div class="sec"><h2>3 个硬指标</h2><span class="note">每 4 周测一次</span></div>
+    <div class="cards3">
+      <div class="card"><div class="big">300</div><h3>个词，讲清你的一天</h3><p>吃、学、见谁、几点、心情。</p></div>
+      <div class="card"><div class="big">80%</div><h3>听懂 A1 慢速对话</h3><p>数字、时间、地点不丢。</p></div>
+      <div class="card"><div class="big">50</div><h3>词，写一条短信</h3><p>问候 + 说事 + 约时间，不出大错。</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>每天 45 分钟</h2><span class="note">时间固定，内容可换</span></div>
+    <div class="day">
+      <div class="b" style="--c:var(--der)"><div class="t">10′</div><h4>复习</h4><p>只做回忆，不看答案。</p></div>
+      <div class="b" style="--c:var(--gold)"><div class="t">20′</div><h4>输入</h4><p>课文 / 听力 / 阅读，标生词。</p></div>
+      <div class="b" style="--c:var(--green2)"><div class="t">10′</div><h4>跟读 + 说</h4><p>影子练习，再自言自语 3 句。</p></div>
+      <div class="b" style="--c:var(--red)"><div class="t">5′</div><h4>造句</h4><p>用今天 3 个新词，各写一句。</p></div>
+    </div>
+    <p class="quote">先复习，再输入，最后输出——顺序别反。</p>
+  </section>
+
+  <section>
+    <div class="sec"><h2>一周的节奏</h2><span class="note">少一天可以，断三天就要重来</span></div>
+    <div class="rhythm">
+      <div class="card"><div class="k">周一 – 周五</div><h3>45′ / 天</h3><ul><li>10′ 复习</li><li>20′ 输入</li><li>10′ 跟读 + 3 句</li><li>5′ 造句</li></ul><span class="key">关键：不断</span></div>
+      <div class="card"><div class="k">周六</div><h3>60′</h3><ul><li>本周语法复盘</li><li>5 句自己造</li><li>3 个错题重做</li><li>下周生词预习</li></ul><span class="key">关键：复盘</span></div>
+      <div class="card"><div class="k">周日</div><h3>60–90′</h3><ul><li>30′ 口语（真人 / AI）</li><li>1 篇 80 词短文</li><li>错题本整理</li><li>下周计划 10′</li></ul><span class="key">关键：输出</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>12 周地图</h2><span class="note">四个阶段，每个阶段只盯一个重点</span></div>
+    <div class="map">
+      <div class="m" style="--c:var(--der)"><div class="w">W1–3</div><h4>地基</h4><p>A1 K1–6 语法六表<br>120 词<br>每天 3 句</p></div>
+      <div class="m" style="--c:var(--gold)"><div class="w">W4–6</div><h4>A1 收尾</h4><p>K7–9<br>Dativ / 介词 / 命令式<br>每周 1 次口语</p></div>
+      <div class="m" style="--c:var(--green2)"><div class="w">W7–9</div><h4>输出</h4><p>K10–12 + Perfekt<br>每周 1 篇 + 2 次口语</p></div>
+      <div class="m" style="--c:var(--red)"><div class="w">W10–12</div><h4>整合 + A2</h4><p>模考 + 错题专项<br>A2 第 1 课试水</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>四个阶段</h2><span class="note">点开每周打卡，进度会保存</span></div>
+
+    <div class="phase" style="--c:var(--der)">
+      <div class="phase-h"><span class="w">W1–3</span><span class="n">地基</span><span class="tip">TIP 只做一件事：把 6 张表变成 30 句自己的话。</span></div>
+      <div class="phase-b">
+        <div class="cell"><div class="l">语法</div><div class="v">动词变位 · sein/haben · 情态动词 · 冠词与复数 · 四格</div></div>
+        <div class="cell"><div class="l">单词</div><div class="v">每周 40 个（K1–6 高频），只要求“认得”</div></div>
+        <div class="cell"><div class="l">输出</div><div class="v">每天 3 句 + 周末 60 词短文</div></div>
+        <div class="cell"><div class="l">检验</div><div class="v">8 句自我介绍；50 词短信不出大错</div></div>
+      </div>
+    </div>
+
+    <div class="phase" style="--c:var(--gold)">
+      <div class="phase-h"><span class="w">W4–6</span><span class="n">A1 收尾</span><span class="tip">TIP 第一次开口会很难，提前写好 5 句。</span></div>
+      <div class="phase-b">
+        <div class="cell"><div class="l">语法</div><div class="v">Dativ · 介词 in/an/auf · 命令式 du/ihr · sollen/dürfen</div></div>
+        <div class="cell"><div class="l">单词</div><div class="v">每周 35 个（K7–9），开始要求会用 1/3</div></div>
+        <div class="cell"><div class="l">输出</div><div class="v">每周 1 次 30 分钟口语 + 1 篇 80 词</div></div>
+        <div class="cell"><div class="l">检验</div><div class="v">住房 / 健康 / 工作，各说 5 句</div></div>
+      </div>
+    </div>
+
+    <div class="phase" style="--c:var(--green2)">
+      <div class="phase-h"><span class="w">W7–9</span><span class="n">输出</span><span class="tip">TIP Perfekt 先练 10 个常用动词。</span></div>
+      <div class="phase-b">
+        <div class="cell"><div class="l">语法</div><div class="v">Perfekt · 时间状语 · und/aber/denn</div></div>
+        <div class="cell"><div class="l">单词</div><div class="v">每周 35 个（K10–12），优先动词和场景名词</div></div>
+        <div class="cell"><div class="l">输出</div><div class="v">每周 1 篇 100 词 + 2 次 20 分钟口语</div></div>
+        <div class="cell"><div class="l">检验</div><div class="v">用 Perfekt 讲上周末 1 分钟</div></div>
+      </div>
+    </div>
+
+    <div class="phase" style="--c:var(--red)">
+      <div class="phase-h"><span class="w">W10–12</span><span class="n">整合 + A2</span><span class="tip">TIP 分数不重要，错题类型才重要。</span></div>
+      <div class="phase-b">
+        <div class="cell"><div class="l">语法</div><div class="v">总复习 + 错题专项（冠词 / 词序 / 介词）</div></div>
+        <div class="cell"><div class="l">单词</div><div class="v">复习为主，每周只新增 20 个</div></div>
+        <div class="cell"><div class="l">输出</div><div class="v">3 分钟独白 + 100 词邮件</div></div>
+        <div class="cell"><div class="l">检验</div><div class="v">Goethe A1 模考 + A2 第 1 课试水</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="weeks">
+    <div class="sec"><h2>12 周打卡</h2><span class="note">每完成一周，勾一下</span></div>
+    <div class="weeks" id="weekList">
+      <div class="week p1"><span class="no">01</span><span class="f">动词变位 + sein/haben</span><span class="g">40 词 · 每天 3 句</span><label><input type="checkbox" data-w="1"> 完成</label></div>
+      <div class="week p1"><span class="no">02</span><span class="f">冠词、复数、否定</span><span class="g">40 词 · 60 词短文</span><label><input type="checkbox" data-w="2"> 完成</label></div>
+      <div class="week p1"><span class="no">03</span><span class="f">四格、语序、问句</span><span class="g">40 词 · 自测 K1–3</span><label><input type="checkbox" data-w="3"> 完成</label></div>
+      <div class="week p2"><span class="no">04</span><span class="f">Dativ + K7</span><span class="g">35 词 · 第一次口语</span><label><input type="checkbox" data-w="4"> 完成</label></div>
+      <div class="week p2"><span class="no">05</span><span class="f">介词 + 命令式 + K8</span><span class="g">35 词 · 80 词短文</span><label><input type="checkbox" data-w="5"> 完成</label></div>
+      <div class="week p2"><span class="no">06</span><span class="f">sollen/dürfen + K9</span><span class="g">35 词 · 场景 5 句</span><label><input type="checkbox" data-w="6"> 完成</label></div>
+      <div class="week p3"><span class="no">07</span><span class="f">Perfekt（一）+ K10</span><span class="g">35 词 · 每周 2 次口语</span><label><input type="checkbox" data-w="7"> 完成</label></div>
+      <div class="week p3"><span class="no">08</span><span class="f">Perfekt（二）+ K11</span><span class="g">35 词 · 100 词短文</span><label><input type="checkbox" data-w="8"> 完成</label></div>
+      <div class="week p3"><span class="no">09</span><span class="f">时间状语 + K12</span><span class="g">35 词 · 讲上周末</span><label><input type="checkbox" data-w="9"> 完成</label></div>
+      <div class="week p4"><span class="no">10</span><span class="f">A1 总复习 + 模考</span><span class="g">复习为主 · 20 词</span><label><input type="checkbox" data-w="10"> 完成</label></div>
+      <div class="week p4"><span class="no">11</span><span class="f">弱项专项</span><span class="g">冠词 / 词序 / 介词</span><label><input type="checkbox" data-w="11"> 完成</label></div>
+      <div class="week p4"><span class="no">12</span><span class="f">A2 第 1 课 + 复盘</span><span class="g">3 分钟独白</span><label><input type="checkbox" data-w="12"> 完成</label></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>背单词：把痛苦降到最低</h2><span class="note">单词不是背会的，是用会的</span></div>
+    <div class="rules">
+      <div class="rule"><span class="n">01</span><div><h4>一次 15 个</h4><p>不是 100 个。宁可 15 个 × 7 天。</p></div></div>
+      <div class="rule"><span class="n">02</span><div><h4>带上下文</h4><p>名词：冠词 + 复数；动词：一个典型句。</p></div></div>
+      <div class="rule"><span class="n">03</span><div><h4>分两档</h4><p>认得 70%，会用 30%；不要求每个都默写。</p></div></div>
+      <div class="rule"><span class="n">04</span><div><h4>间隔重复</h4><p>当晚 · 次日 · 第 4 天 · 第 7 天。</p></div></div>
+      <div class="rule"><span class="n">05</span><div><h4>每天造句</h4><p>用 3 个新词写 3 句自己的话。</p></div></div>
+      <div class="rule"><span class="n">06</span><div><h4>抓词</h4><p>听读时遇到刚背的词，划掉——最好的奖励。</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>语法：懂 ≠ 会</h2><span class="note">规则 → 5 句 → 3 错题 → 复测</span></div>
+    <div class="cards3">
+      <div class="card"><div class="k">Schritt 1</div><h3>一张规则</h3><p>只记一个点，别一次学一章。</p></div>
+      <div class="card"><div class="k">Schritt 2</div><h3>造 5 句</h3><p>必须用你自己的生活，不抄例句。</p></div>
+      <div class="card"><div class="k">Schritt 3</div><h3>改 3 个错题</h3><p>写“错因”，不抄整题；下周复测。</p></div>
+    </div>
+    <p class="quote">A1 语法只有 6 张表：变位 · 冠词复数 · 四格 · 语序问句 · 情态 · 过去时。</p>
+  </section>
+
+  <section>
+    <div class="sec"><h2>口语：从第一天开始</h2><span class="note">口语是发现不会的工具，不是展示学会的舞台</span></div>
+    <div class="cards3">
+      <div class="card"><div class="k">每天 10′</div><h3>跟读</h3><p>课文音频延迟半句跟着说，练嘴和耳朵。</p></div>
+      <div class="card"><div class="k">每天 3 句</div><h3>自言自语</h3><p>今天做了什么、想吃什么、周末计划。</p></div>
+      <div class="card"><div class="k">每周 2 × 20′</div><h3>对话</h3><p>提前准备 5 个问题；结束后只改 1 个。</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>7 个坑</h2><span class="note">比“不努力”更常见</span></div>
+    <div class="pit">
+      <div class="p"><span class="n">01</span><div><h4>先背完单词再练口语</h4><p>单词永远背不完，口语永远排不上。</p></div></div>
+      <div class="p"><span class="n">02</span><div><h4>只背裸词</h4><p>没有冠词、复数、例句，等于没背。</p></div></div>
+      <div class="p"><span class="n">03</span><div><h4>语法只看不造句</h4><p>看懂 ≠ 会用，5 句起步。</p></div></div>
+      <div class="p"><span class="n">04</span><div><h4>追求一次记住</h4><p>记忆靠重复遇见，不靠意志力。</p></div></div>
+      <div class="p"><span class="n">05</span><div><h4>只输入不输出</h4><p>没有输出，输入只是“眼熟”。</p></div></div>
+      <div class="p"><span class="n">06</span><div><h4>材料太难</h4><p>生词超过 20%，挫败感会劝退你。</p></div></div>
+      <div class="p"><span class="n">07</span><div><h4>三天打鱼</h4><p>断 3 天，前两周白干。</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>只用这 5 样</h2><span class="note">工具越多，越容易不开始</span></div>
+    <div class="mats">
+      <div class="mat"><span class="n">01</span><div><b>Netzwerk neu A1</b><span>第 7–12 课 + 音频；一课一周。</span></div></div>
+      <div class="mat"><span class="n">02</span><div><b>Goethe A1 Wortliste</b><span>650 词，查漏用；不要从 A 背到 Z。</span></div></div>
+      <div class="mat"><span class="n">03</span><div><b>A1 词汇手册</b><span><a href="vocab.html">1686 词 + 发音 + 三性分栏</a></span></div></div>
+      <div class="mat"><span class="n">04</span><div><b>Anki</b><span>只放“认得”卡；一天 15 张新卡封顶。</span></div></div>
+      <div class="mat"><span class="n">05</span><div><b>Tandem / AI 语音</b><span>每周 2 次 20 分钟；提前准备 5 个问题。</span></div></div>
+      <div class="mat"><span class="n">06</span><div><b>不规则动词表</b><span><a href="a1-verben.html">A1 变位 + 例句</a></span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>12 周后</h2></div>
+    <p class="quote" style="font-size:18px">不是背完多少词，而是能不能用德语过一天。</p>
+  </section>
+</main>
+
+<button id="top" title="回到顶部">↑</button>
+
+<footer class="wrap">
+  计划按“12 周 × 每周 5 小时”设计；如果某周断了，从当周继续，不要从头再来。<br>
+  配套：<a href="vocab.html">A1 词汇手册</a> · <a href="a1-verben.html">不规则动词</a> · <a href="plan.html">考前 5 天急救</a>
+</footer>
+
+<script>
+(function(){
+  var KEY='a1_weeks_v1';
+  var saved={};
+  try{ saved=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ saved={}; }
+  var boxes=[].slice.call(document.querySelectorAll('#weekList input[type=checkbox]'));
+  boxes.forEach(function(b){
+    var w=b.getAttribute('data-w');
+    if(saved[w]){ b.checked=true; b.closest('.week').classList.add('done'); }
+    b.addEventListener('change',function(){
+      saved[w]=b.checked;
+      b.closest('.week').classList.toggle('done',b.checked);
+      localStorage.setItem(KEY,JSON.stringify(saved));
+      update();
+    });
+  });
+  function update(){
+    var done=boxes.filter(function(b){return b.checked;}).length;
+    var pct=Math.round(done*100/boxes.length);
+    document.getElementById('pct').textContent=pct+'%';
+    document.getElementById('bar').style.width=pct+'%';
+    document.getElementById('ptext').textContent=done+' / '+boxes.length+' 周完成';
+  }
+  update();
+
+  var start=new Date('2026-11-18T00:00:00+08:00');
+  var cd=document.getElementById('countdown');
+  if(cd){
+    var diff=start-Date.now();
+    if(diff>0){
+      cd.innerHTML='距开始 <b>'+Math.ceil(diff/86400000)+'</b> 天';
+    }else{
+      var wk=Math.floor((Date.now()-start)/604800000)+1;
+      cd.innerHTML='进行到第 <b>'+Math.min(wk,12)+'</b> 周';
+    }
+  }
+  var top=document.getElementById('top');
+  addEventListener('scroll',function(){top.classList.toggle('on',scrollY>700);},{passive:true});
+  top.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'});});
+})();
+</script>
+</body>
+</html>

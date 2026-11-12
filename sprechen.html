@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c3527">
+<title>口语 · 72 句 · 每天 10 分钟</title>
+<link rel="stylesheet" href="site.css">
+<style>
+  :root{
+    --bg:#f7f2e7; --card:#fffdf8; --ink:#1b2420; --muted:#5f6d66; --faint:#95a09a;
+    --line:#e3dbc9; --green:#0f4a35; --green2:#1a6b4d; --gold:#c98a12; --red:#b23a3a;
+    --shadow:0 1px 2px rgba(27,36,32,.05),0 14px 34px -22px rgba(27,36,32,.4);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+    font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+
+  header.hero{background:linear-gradient(150deg,#0a2e22 0%,#0f4a35 55%,#17624a 100%);color:#f2eee3;padding:36px 0 48px;position:relative;overflow:hidden}
+  header.hero::after{content:"";position:absolute;right:-80px;bottom:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%)}
+  .eyebrow{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#a9c8b7;margin:0 0 10px}
+  h1{margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC",serif;
+     font-size:clamp(38px,6.2vw,58px);font-weight:600;letter-spacing:-.02em;line-height:1.03}
+  .hero p.lead{margin:12px 0 0;color:#cfe0d6;font-size:14.5px;max-width:40em}
+  .hero p.lead b{color:#fff}
+  .metaline{margin-top:18px;display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:#a9c8b7}
+  .metaline b{color:#f0c75e}
+
+  main{padding:34px 0 70px}
+  section{margin:0 0 42px}
+  .sec{display:flex;align-items:baseline;gap:12px;margin:0 0 14px;border-bottom:1px solid var(--line);padding-bottom:8px}
+  .sec h2{margin:0;font-family:"Iowan Old Style",Georgia,"Songti SC",serif;font-size:23px;font-weight:600}
+  .sec .note{margin-left:auto;font-size:12px;color:var(--faint)}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 16px;border-top:3px solid var(--c);box-shadow:var(--shadow)}
+  .step .n{font-family:"Iowan Old Style",Georgia,serif;font-size:11px;color:var(--c);font-weight:600}
+  .step h3{margin:4px 0 5px;font-size:15px}
+  .step p{margin:0;font-size:11.5px;color:var(--muted)}
+
+  .daily{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .d{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 16px;box-shadow:var(--shadow)}
+  .d .t{font-family:"Iowan Old Style",Georgia,serif;font-size:11px;color:var(--gold);font-weight:600}
+  .d h3{margin:4px 0 4px;font-size:15px}
+  .d p{margin:0;font-size:11.5px;color:var(--muted)}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 17px;box-shadow:var(--shadow)}
+  .card h3{margin:0 0 8px;font-size:14px;color:var(--green)}
+  .line{display:flex;gap:9px;padding:7px 0;border-bottom:1px dashed #e8e0ce;align-items:flex-start}
+  .line:last-child{border-bottom:0}
+  .line button{flex:0 0 26px;width:26px;height:26px;border-radius:50%;border:1px solid #ddd2bb;background:#fffdf8;cursor:pointer;color:#7a857e;font-size:12px;padding:0;margin-top:1px}
+  .line button:hover{border-color:var(--green);color:var(--green)}
+  .line p{margin:0;font-size:12.5px}
+  .line p i{display:block;font-style:normal;font-size:10.5px;color:var(--faint)}
+
+  .tipbox{background:#fbf7ed;border:1px solid var(--line);border-radius:13px;padding:14px 18px;font-size:12.5px;color:var(--muted)}
+  .tipbox b{color:var(--green)}
+  .tipbox ul{margin:6px 0 0;padding-left:18px}
+  .tipbox li{margin:4px 0}
+
+  footer{border-top:1px solid var(--line);padding:22px 0 46px;color:var(--faint);font-size:12px}
+  footer a{color:var(--green2);text-decoration:none;border-bottom:1px solid #bcd8c8}
+
+  @media (max-width:820px){
+    .steps{grid-template-columns:1fr 1fr}
+    .daily{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr}
+  }
+  @media (max-width:520px){ .steps{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="sitebar">
+  <a class="brand" href="lernen.html">Deutsch A1</a>
+  <nav>
+    <a href="lernen.html">学习中心</a>
+    <a href="vocab.html">词汇</a>
+    <a href="lernplan.html">背词计划</a>
+    <a class="on" href="sprechen.html">口语</a>
+    <a href="a1-verben.html">不规则动词</a>
+    <a href="plan.html">5 天急救</a>
+    <a href="12-wochen.html">12 周计划</a>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Sprechen · A1</p>
+    <h1>每天 10 分钟，敢开口</h1>
+    <p class="lead">12 个单元、<b>72 句</b>口语卡；每句都有发音。不是背句子，是<b>把句子说成自己的</b>。</p>
+    <div class="metaline"><span>4 步练法</span><span>每天 10 分钟</span><span>每周 1 次录音</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <div class="sec"><h2>4 步练法</h2><span class="note">每句都走一遍</span></div>
+    <div class="steps">
+      <div class="step" style="--c:var(--der)"><div class="n">01</div><h3>听</h3><p>点喇叭听 2 遍，抓重音和语调，不逐字翻译。</p></div>
+      <div class="step" style="--c:var(--gold)"><div class="n">02</div><h3>跟读</h3><p>延迟半句跟着说（影子练习），每句 5 遍。</p></div>
+      <div class="step" style="--c:var(--green2)"><div class="n">03</div><h3>替换</h3><p>换主语、时间、地点，造 2 句自己的。</p></div>
+      <div class="step" style="--c:var(--red)"><div class="n">04</div><h3>自由说</h3><p>不看稿说 30 秒，录音，回听只挑 1 个问题。</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>每天 10 分钟</h2><span class="note">和背词计划同一天用</span></div>
+    <div class="daily">
+      <div class="d"><div class="t">3′</div><h3>听今天 1 句</h3><p>点喇叭，听 2 遍，跟读 1 遍。</p></div>
+      <div class="d"><div class="t">4′</div><h3>跟读 + 替换</h3><p>跟读 5 遍，换 2 个词再说 2 句。</p></div>
+      <div class="d"><div class="t">3′</div><h3>不看稿说</h3><p>说 30 秒，录音；只记 1 个要改的点。</p></div>
+    </div>
+    <p class="tipbox" style="margin-top:14px"><b>今天的句子在哪？</b>在 <a href="lernplan.html" style="color:var(--green2)">背词计划</a> 里，每一天都配了 1 句，直接照着练。</p>
+  </section>
+
+  <section>
+    <div class="sec"><h2>12 张口语卡</h2><span class="note">72 句，点喇叭听</span></div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>每周任务</h2><span class="note">周日 15 分钟</span></div>
+    <div class="tipbox">
+      <ul>
+        <li>把本周 6 句连起来，说 <b>1 分钟</b>，录音；</li>
+        <li>和上周录音对比，只找 <b>1 个进步</b> 和 <b>1 个问题</b>；</li>
+        <li>下周只改这个问题，不要一次改五个；</li>
+        <li>有机会就找真人/AI 对话 20 分钟，提前准备 5 个问题。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>常见问题</h2></div>
+    <div class="cards">
+      <div class="card"><h3>怕说错</h3><p style="margin:0;font-size:12.5px;color:var(--muted)">先说对 3 句，再求快。A1 阶段，对方能听懂比语法完美重要。</p></div>
+      <div class="card"><h3>没有语伴</h3><p style="margin:0;font-size:12.5px;color:var(--muted)">自言自语、跟读、AI 语音都算练。每天 3 句，比每周 1 小时有效。</p></div>
+      <div class="card"><h3>发音不准</h3><p style="margin:0;font-size:12.5px;color:var(--muted)">一周只挑 1 个音（ch / r / ü），练到不假思索，别全面开花。</p></div>
+      <div class="card"><h3>记不住句子</h3><p style="margin:0;font-size:12.5px;color:var(--muted)">别背整句，记“骨架 + 替换词”：Ich möchte … / Ich habe … / Wo ist …?</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  句子配套：<a href="lernplan.html">91 天背词计划</a> · <a href="vocab.html">词汇手册</a> · <a href="a1-verben.html">不规则动词</a><br>
+  音频由本地语音合成生成，语速偏慢，适合跟读。
+</footer>
+
+<script>
+const UNITS = [{"u":1,"n":169,"k":18,"t":"Guten Tag! · 问候与介绍","s":[["Ich heiße Anna und komme aus China.","我叫安娜，来自中国。"],["Ich wohne in Berlin.","我住在柏林。"],["Ich spreche Chinesisch, Deutsch und Englisch.","我说中文、德语和英语。"],["Wie geht es dir? — Danke, gut.","你好吗？——谢谢，很好。"],["Das ist mein Freund.","这是我的朋友。"],["Meine Telefonnummer ist null eins sieben drei.","我的电话是 0173。"]]},{"u":2,"n":202,"k":21,"t":"Freunde und Kollegen · 爱好与职业","s":[["Ich arbeite als Lehrer.","我当老师。"],["Ich habe am Wochenende frei.","我周末有空。"],["Ich lese gern Bücher und höre gern Musik.","我喜欢读书、听音乐。"],["Wann hast du Zeit?","你什么时候有空？"],["Ich fahre gern Fahrrad.","我喜欢骑自行车。"],["Am Montag gehe ich ins Kino.","周一我去看电影。"]]},{"u":3,"n":142,"k":9,"t":"In Hamburg · 城市与交通","s":[["Entschuldigung, wo ist der Bahnhof?","请问，火车站在哪里？"],["Gehen Sie geradeaus und dann rechts.","一直走，然后右转。"],["Ich fahre mit dem Bus zur Arbeit.","我坐公交车上班。"],["Wie komme ich zum Museum?","我怎么去博物馆？"],["Die Straße ist sehr lang.","这条街很长。"],["Im Sommer fahre ich ans Meer.","夏天我去海边。"]]},{"u":4,"n":198,"k":29,"t":"Guten Appetit! · 食物与购物","s":[["Ich möchte einen Kaffee, bitte.","我要一杯咖啡。"],["Was kostet das?","这个多少钱？"],["Ich kaufe Brot und Käse.","我买面包和奶酪。"],["Ich esse gern Gemüse.","我喜欢吃蔬菜。"],["Das schmeckt sehr gut.","这很好吃。"],["Haben Sie noch Äpfel?","您还有苹果吗？"]]},{"u":5,"n":121,"k":57,"t":"Alltag und Familie · 日常与家庭","s":[["Ich stehe um sieben Uhr auf.","我七点起床。"],["Ich muss heute arbeiten.","我今天必须工作。"],["Kannst du am Freitag kommen?","你周五能来吗？"],["Ich habe keine Zeit.","我没有时间。"],["Meine Familie wohnt in Shanghai.","我家住在上海。"],["Wir treffen uns um acht.","我们八点见。"]]},{"u":6,"n":121,"k":45,"t":"Zeit mit Freunden · 时间与朋友","s":[["Ich habe am dritten Mai Geburtstag.","我五月三日生日。"],["Wir laden dich herzlich ein.","我们热情邀请你。"],["Kommst du am Samstag zur Party?","你周六来参加聚会吗？"],["Ich war gestern im Restaurant.","我昨天在餐馆。"],["Ich hatte viel Spaß.","我玩得很开心。"],["Viele Grüße aus Berlin.","来自柏林的问候。"]]},{"u":7,"n":111,"k":40,"t":"Arbeitsalltag · 工作日常","s":[["Ich arbeite bei einer Firma in Hamburg.","我在汉堡一家公司工作。"],["Ich fahre mit dem Zug zur Arbeit.","我坐火车上班。"],["Kannst du mir bitte helfen?","你能帮我一下吗？"],["Das Buch gehört mir.","这本书是我的。"],["Nach der Arbeit gehe ich einkaufen.","下班后我去购物。"],["Ich spreche morgen mit meinem Chef.","我明天和老板谈。"]]},{"u":8,"n":143,"k":59,"t":"Fit und gesund · 身体与健康","s":[["Ich fühle mich nicht gut.","我感觉不舒服。"],["Mein Kopf tut weh.","我头疼。"],["Du sollst mehr Wasser trinken.","你应该多喝水。"],["Ich darf heute nicht raus.","我今天不能出门。"],["Gehen Sie zum Arzt!","去看医生！"],["Gute Besserung!","祝你早日康复！"]]},{"u":9,"n":119,"k":54,"t":"Meine Wohnung · 住房","s":[["Ich wohne in einer kleinen Wohnung.","我住在一间小公寓。"],["Die Wohnung hat zwei Zimmer.","这套房子有两个房间。"],["Der Schrank steht im Schlafzimmer.","衣柜在卧室里。"],["Die Miete ist zu teuer.","房租太贵了。"],["Ich stelle die Bücher ins Regal.","我把书放到书架上。"],["Im Wohnzimmer gibt es ein Sofa.","客厅里有一个沙发。"]]},{"u":10,"n":95,"k":32,"t":"Studium und Beruf · 学习与职业","s":[["Ich habe Informatik studiert.","我学过计算机。"],["Ich habe zwei Jahre als Praktikant gearbeitet.","我做过两年实习生。"],["Ich bewerbe mich um eine Stelle.","我在申请一个职位。"],["Mein Traumjob ist Lehrer.","我的梦想职业是老师。"],["Ich kann gut mit Menschen arbeiten.","我擅长和人打交道。"],["Seit 2020 lerne ich Deutsch.","我从 2020 年开始学德语。"]]},{"u":11,"n":134,"k":50,"t":"Kleidung und Einkaufen · 衣物与购物","s":[["Ich habe eine Jacke gekauft.","我买了一件夹克。"],["Das passt mir sehr gut.","这很适合我。"],["Die Farbe gefällt mir.","我喜欢这个颜色。"],["Wie viel kostet das Hemd?","这件衬衫多少钱？"],["Ich möchte das umtauschen.","我想换这个。"],["Die Schuhe sind zu klein.","这双鞋太小了。"]]},{"u":12,"n":131,"k":51,"t":"Reisen · 旅行","s":[["Ich fahre im Sommer nach Deutschland.","我夏天去德国。"],["Ich habe schon ein Hotel gebucht.","我已经订了酒店。"],["Der Zug fährt um neun Uhr.","火车九点开。"],["Ich möchte eine Fahrkarte kaufen.","我想买一张票。"],["Wo ist der Bahnsteig?","站台在哪里？"],["Schöne Reise!","旅途愉快！"]]}];
+const el = document.getElementById('cards');
+el.innerHTML = UNITS.map(U =>
+  '<div class="card"><h3>K'+U.u+' · '+esc(U.t.split(' · ')[1])+'</h3>'+
+  U.s.map((x,i) =>
+    '<div class="line"><button data-a="audio/sp_'+U.u+'_'+(i+1)+'.m4a" aria-label="播放">▶</button>'+
+    '<p>'+esc(x[0])+'<i>'+esc(x[1])+'</i></p></div>'
+  ).join('')+'</div>'
+).join('');
+
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+let cur=null;
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-a]');
+  if (!b) return;
+  if (cur) { cur.pause(); cur = null; }
+  document.querySelectorAll('.line button').forEach(x=>x.textContent='▶');
+  cur = new Audio(b.getAttribute('data-a'));
+  b.textContent = '■';
+  cur.play().catch(()=>{ b.textContent='▶'; });
+  cur.addEventListener('ended', ()=>{ b.textContent='▶'; });
+});
+</script>
+</body>
+</html>

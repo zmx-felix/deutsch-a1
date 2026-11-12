@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c3527">
+<title>Deutsch A1 · 学习中心</title>
+<link rel="stylesheet" href="site.css">
+<style>
+  :root{
+    --bg:#f7f2e7; --card:#fffdf8; --ink:#1b2420; --muted:#5f6d66; --faint:#95a09a;
+    --line:#e3dbc9; --green:#0f4a35; --green2:#1a6b4d; --gold:#c98a12;
+    --der:#2b6cb0; --das:#2f855a; --die:#b23a3a;
+    --shadow:0 1px 2px rgba(27,36,32,.05),0 18px 40px -26px rgba(27,36,32,.45);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+    font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+  .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC",serif}
+
+  header{background:linear-gradient(150deg,#0a2e22 0%,#0f4a35 58%,#17624a 100%);color:#f2eee3;padding:44px 0 52px;position:relative;overflow:hidden}
+  header::after{content:"";position:absolute;right:-100px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%)}
+  .eyebrow{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#a9c8b7;margin:0 0 12px}
+  h1{margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC",serif;
+     font-size:clamp(42px,7vw,66px);font-weight:600;letter-spacing:-.02em;line-height:1}
+  header p{margin:14px 0 0;color:#cfe0d6;font-size:15px;max-width:34em}
+  header p b{color:#fff}
+
+  main{padding:36px 0 70px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .big{
+    display:block;background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:24px;text-decoration:none;color:inherit;box-shadow:var(--shadow);
+    position:relative;overflow:hidden;transition:transform .15s,border-color .15s;
+  }
+  .big:hover{transform:translateY(-2px);border-color:#cdbf9f}
+  .big::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c)}
+  .big .num{font-family:"Iowan Old Style",Georgia,serif;font-size:12px;color:var(--c);font-weight:600;letter-spacing:.08em}
+  .big h2{margin:8px 0 6px;font-size:26px}
+  .big p{margin:0;color:var(--muted);font-size:13.5px}
+  .big .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+  .big .tags span{font-size:10.5px;color:#7a6a4a;background:#f3ecdc;border:1px solid #e4d8bf;border-radius:99px;padding:2px 9px}
+  .big .go{margin-top:16px;font-size:12px;color:var(--c);font-weight:600}
+
+  .small{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}
+  .s{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:border-color .15s}
+  .s:hover{border-color:#cdbf9f}
+  .s b{display:block;font-size:15px;margin-bottom:2px}
+  .s span{font-size:12px;color:var(--muted)}
+
+  .how{background:#fbf7ed;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:22px}
+  .how h3{margin:0 0 8px;font-size:14px;color:var(--green)}
+  .how ol{margin:0;padding-left:18px}
+  .how li{font-size:12.5px;color:var(--muted);margin:4px 0}
+
+  .qrbox{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-top:16px;box-shadow:var(--shadow)}
+  .qrbox img{width:108px;height:108px;display:block;border-radius:8px}
+  .qrbox b{display:block;font-size:14px;color:var(--green)}
+  .qrbox span{font-size:12px;color:var(--muted)}
+  footer{border-top:1px solid var(--line);padding:22px 0 46px;color:var(--faint);font-size:12px}
+
+  @media (max-width:760px){
+    .grid,.small{grid-template-columns:1fr}
+    header{padding:34px 0 40px}
+  }
+</style>
+</head>
+<body>
+<div class="sitebar">
+  <a class="brand" href="lernen.html">Deutsch A1</a>
+  <nav>
+    <a class="on" href="lernen.html">学习中心</a>
+    <a href="vocab.html">词汇</a>
+    <a href="lernplan.html">背词计划</a>
+    <a href="sprechen.html">口语</a>
+    <a href="a1-verben.html">不规则动词</a>
+    <a href="plan.html">5 天急救</a>
+    <a href="12-wochen.html">12 周计划</a>
+  </nav>
+</div>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Deutsch A1 · Lernzentrum</p>
+    <h1>学习中心</h1>
+    <p>两条主线：<b>12 周计划</b>负责长期，<b>不规则动词</b>负责语法硬骨头；词汇手册和 5 天急救随用随查。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+    <a class="big" href="12-wochen.html" style="--c:var(--green)">
+      <div class="num">01 · PLAN</div>
+      <h2>12 周德语计划</h2>
+      <p>考后从 A1 收尾到敢开口。每天 45 分钟，每周 5 小时；四个阶段，12 周打卡。</p>
+      <div class="tags"><span>每日 45′</span><span>4 个阶段</span><span>390 词</span><span>可勾选进度</span></div>
+      <div class="go">打开计划 →</div>
+    </a>
+    <a class="big" href="a1-verben.html" style="--c:var(--die)">
+      <div class="num">02 · GRAMMATIK</div>
+      <h2>不规则动词变位</h2>
+      <p>A1 第 1–6 单元：e→i、a→ä、sein/haben、情态动词、war/hatte，一张表查完。</p>
+      <div class="tags"><span>21 个动词</span><span>变位表</span><span>例句</span><span>可打印</span></div>
+      <div class="go">打开变位表 →</div>
+    </a>
+  </div>
+
+  <div class="small">
+    <a class="s" href="lernplan.html"><b>A1 背词计划 · 91 天</b><span>1686 词，每天 20 个 + 一句口语，勾选进度。</span></a>
+    <a class="s" href="vocab.html"><b>A1 词汇手册 · 1686 词</b><span>1–12 单元，三性分栏 + 复数 + 发音。</span></a>
+    <a class="s" href="sprechen.html"><b>口语 · 72 句</b><span>12 张口语卡 + 4 步练法，每天 10 分钟。</span></a>
+    <a class="s" href="plan.html"><b>考前 5 天急救</b><span>只背 179 个重点词 + 6 张语法表 + 3 种题型。</span></a>
+  </div>
+
+  <div class="how">
+    <h3>怎么用这套东西</h3>
+    <ol>
+      <li>长期：从 <b>12 周计划</b>开始，每周勾一次进度；每天 45 分钟按四块走。</li>
+      <li>遇到变位记不住：查 <b>不规则动词</b>，只背 du / er 两个位置。</li>
+      <li>背词：用 <b>词汇手册</b>按 K1–K6 筛，点喇叭跟读；只要求“认得”的先过。</li>
+      <li>考试前一周：切到 <b>5 天急救</b>，按天执行。</li>
+    </ol>
+  </div>
+  <div class="qrbox">
+    <img src="qr-lernen.png" alt="扫码打开学习中心">
+    <div><b>手机打开</b><span>手机流量也能打开，用相机扫码即可。打不开说明这台 Mac 睡了或隧道断了，叫我重启。</span></div>
+  </div>
+</main>
+
+<footer class="wrap">
+  Netzwerk neu A1 · 词汇与发音本地可用 · 页面可离线打开
+</footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+/* shared top navigation */
+.sitebar{
+  background:#0b2b20;
+  color:#dfe9e2;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+  font-size:12.5px;
+  line-height:1.4;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:0 20px;
+  min-height:42px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  position:relative;
+  z-index:120;
+}
+.sitebar .brand{
+  color:#fff;
+  font-weight:600;
+  letter-spacing:.04em;
+  text-decoration:none;
+  white-space:nowrap;
+  font-size:13px;
+}
+.sitebar .brand::before{
+  content:"";
+  display:inline-block;
+  width:7px;height:7px;border-radius:50%;
+  background:#e8b23c;
+  margin-right:8px;
+  vertical-align:1px;
+}
+.sitebar nav{
+  display:flex;
+  gap:4px;
+  margin-left:auto;
+  overflow-x:auto;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.sitebar nav::-webkit-scrollbar{display:none}
+.sitebar nav a{
+  color:#c3d6ca;
+  text-decoration:none;
+  padding:6px 10px;
+  border-radius:7px;
+  white-space:nowrap;
+  transition:background .15s,color .15s;
+}
+.sitebar nav a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.sitebar nav a.on{color:#f3c96a;background:rgba(243,201,106,.10)}
+@media (max-width:640px){
+  .sitebar{padding:0 14px;gap:10px}
+  .sitebar .brand{font-size:12px}
+  .sitebar .brand::before{display:none}
+  .sitebar nav a{padding:6px 8px;font-size:12px}
+}
+@media print{
+  .sitebar{display:none}
+}

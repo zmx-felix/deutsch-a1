@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f1e6">
+<title>A1 词汇手册 · Netzwerk neu K1–K6</title>
+<style>
+  :root{
+    --paper:#f6f1e6;
+    --card:#fffdf8;
+    --ink:#1d2420;
+    --muted:#66716a;
+    --faint:#9aa39d;
+    --line:#e2dac9;
+    --der:#2b6cb0;
+    --das:#2f855a;
+    --die:#b23a3a;
+    --gold:#e8a90c;
+    --deep:#123f31;
+    --shadow:0 1px 2px rgba(29,36,32,.05), 0 10px 26px -18px rgba(29,36,32,.35);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC",serif}
+
+  /* hero */
+  header.hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(circle at 88% -10%, rgba(43,108,176,.10), transparent 26rem),
+      radial-gradient(circle at 6% 110%, rgba(178,58,58,.08), transparent 24rem),
+      linear-gradient(180deg,#fffdf7,#f6f1e6);
+    border-bottom:1px solid var(--line);
+    padding:34px 0 26px;
+  }
+  .hero-in{
+    max-width:1180px;margin:0 auto;padding:0 22px;
+    display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  }
+  .eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:#8a6d3b;margin:0 0 8px}
+  h1{
+    margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC",serif;
+    font-size:clamp(38px,6vw,58px);font-weight:600;letter-spacing:-.02em;line-height:1;
+  }
+  .planlink{display:inline-block;margin-top:14px;font-size:12.5px;color:#7a5c22;border:1px solid #d8c9a8;background:#fffaf0;border-radius:999px;padding:5px 12px;text-decoration:none}
+  .planlink:hover{background:#f6ecd8}
+  h1 small{display:block;font-family:inherit;font-size:13px;letter-spacing:.16em;color:var(--muted);font-weight:500;margin-top:10px;text-transform:uppercase}
+  .stats{display:flex;gap:22px;padding-bottom:6px}
+  .stat b{display:block;font-family:"Iowan Old Style",Georgia,serif;font-size:26px;line-height:1.1}
+  .stat span{font-size:11.5px;color:var(--muted);letter-spacing:.08em}
+  .stat.der b{color:var(--der)} .stat.das b{color:var(--das)} .stat.die b{color:var(--die)}
+  .tricolor{height:3px;display:flex;margin-top:26px}
+  .tricolor i{flex:1}
+  .tricolor i:nth-child(1){background:var(--der)} .tricolor i:nth-child(2){background:var(--das)} .tricolor i:nth-child(3){background:var(--die)}
+
+  /* toolbar */
+  .bar{
+    position:sticky;top:0;z-index:60;
+    background:rgba(246,241,230,.92);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .bar-in{max-width:1180px;margin:0 auto;padding:9px 22px 5px;display:flex;gap:8px;align-items:center}
+  .bar-chips{max-width:1180px;margin:0 auto;padding:0 22px 4px;display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap}
+  .bar-chips::-webkit-scrollbar{display:none}
+  .bar-chips .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .bar-chips .chips::-webkit-scrollbar{display:none}
+  .tools{display:flex;gap:6px;flex:0 0 auto}
+  .search{position:relative;flex:1 1 210px;min-width:180px}
+  .search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:#8b948e;fill:none;stroke-width:2}
+  #q{
+    width:100%;padding:9px 12px 9px 33px;border:1px solid #d8cfbc;border-radius:999px;
+    background:#fffdf8;font:inherit;font-size:14px;color:var(--ink);outline:none;
+  }
+  #q:focus{border-color:var(--deep);box-shadow:0 0 0 3px rgba(18,63,49,.08)}
+  .chips{display:flex;gap:5px;flex-wrap:wrap}
+  .chip{
+    border:1px solid #d8cfbc;background:#fffdf8;color:#5d6a63;border-radius:999px;
+    padding:6px 11px;font:inherit;font-size:12.5px;cursor:pointer;line-height:1;white-space:nowrap;
+  }
+  .chip.on{background:var(--deep);border-color:var(--deep);color:#fff}
+  .chip.heart.on{background:var(--gold);border-color:var(--gold);color:#3a2a00}
+  .chip.test.on{background:#5b4a86;border-color:#5b4a86;color:#fff}
+  .chip{flex:0 0 auto}
+  .status{max-width:1180px;margin:0 auto;padding:0 22px;font-size:11.5px;color:var(--faint);line-height:1.6}
+  .options{max-width:1180px;margin:0 auto;padding:9px 22px 0;display:flex;gap:22px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:#5d6a63}
+  .opt{display:inline-flex;align-items:center;gap:6px;cursor:pointer;user-select:none;white-space:nowrap}
+  .opt input{accent-color:#123f31;width:15px;height:15px;margin:0}
+  .opt .h{color:var(--gold)}
+  #hint:empty{display:none}
+  #hint{display:inline-block;padding-bottom:7px}
+
+  main{max-width:1180px;margin:0 auto;padding:26px 22px 80px}
+  section{margin:0 0 46px;scroll-margin-top:74px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin:0 0 14px;border-bottom:1px solid var(--line);padding-bottom:9px}
+  .sec-head h2{margin:0;font-family:"Iowan Old Style",Georgia,"Songti SC",serif;font-size:24px;font-weight:600;letter-spacing:-.01em}
+  .sec-head .count{font-size:12px;color:var(--faint);letter-spacing:.06em}
+  .sec-head .note{margin-left:auto;font-size:12px;color:var(--faint)}
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .col{min-width:0}
+  .col-head{
+    display:flex;align-items:baseline;gap:9px;padding:0 0 7px;margin-bottom:2px;
+    border-bottom:2px solid currentColor;
+  }
+  .col-der{color:var(--der)} .col-das{color:var(--das)} .col-die{color:var(--die)}
+  .col-head .g{font-family:"Iowan Old Style",Georgia,serif;font-size:21px;font-weight:600;line-height:1}
+  .col-head .lab{font-size:11px;color:var(--faint);letter-spacing:.06em}
+  .col-head .n{margin-left:auto;font-size:11.5px;color:var(--faint)}
+
+  /* word rows */
+  .w{
+    display:flex;gap:9px;align-items:flex-start;
+    padding:8px 2px 8px 0;border-bottom:1px dotted #e4dccb;position:relative;
+  }
+  .w:last-child{border-bottom:0}
+  .w .body{flex:1;min-width:0}
+  .top{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+  .art{font-family:"Iowan Old Style",Georgia,serif;font-size:13px;font-weight:600;letter-spacing:.01em}
+  .g-der .art{color:var(--der)} .g-das .art{color:var(--das)} .g-die .art{color:var(--die)}
+  .lemma{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:17.5px;font-weight:600;letter-spacing:-.005em;line-height:1.25;
+  }
+  .unit{
+    font-size:9.5px;letter-spacing:.05em;color:#9b917c;border:1px solid #ddd2bb;
+    border-radius:4px;padding:0 3px;line-height:1.45;position:relative;top:-1px;
+  }
+  .heart{width:12px;height:12px;fill:var(--gold);flex:0 0 12px;position:relative;top:1px;filter:drop-shadow(0 1px 0 rgba(232,169,12,.35))}
+  .pl{font-size:11.5px;color:#8a948d;margin-top:1px}
+  .pl b{font-weight:500;color:#6f7a72}
+  .zh{font-size:13.5px;color:#3f4b45;margin-top:2px}
+  .spk{
+    flex:0 0 26px;width:26px;height:26px;border-radius:50%;border:1px solid #ddd2bb;
+    background:#fffdf8;cursor:pointer;display:grid;place-items:center;padding:0;margin-top:2px;
+    transition:background .15s,border-color .15s,transform .1s;
+  }
+  .spk svg{width:13px;height:13px;fill:#7a857e}
+  .spk:hover{border-color:var(--deep);background:#f2ede0}
+  .spk:hover svg{fill:var(--deep)}
+  .spk:active{transform:scale(.94)}
+  .spk.playing{border-color:var(--gold);background:#fff6dd}
+  .spk.playing svg{fill:var(--gold)}
+
+  /* test mode */
+  body.test .zh{filter:blur(5px);opacity:.5;transition:filter .18s,opacity .18s;cursor:pointer}
+  body.test .w.show .zh{filter:none;opacity:1}
+
+  /* hidden by filters */
+  .w.hide{display:none}
+  .col.hide{display:none}
+  section.hide{display:none}
+
+  .gtabs{display:none}
+  @media (max-width:900px){
+    .gtabs{
+      display:flex;gap:3px;position:sticky;top:52px;z-index:55;
+      background:rgba(246,241,230,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+      border:1px solid var(--line);border-radius:11px;padding:3px;margin:0 0 14px;
+    }
+    .gtabs button{
+      flex:1;border:0;background:transparent;font:inherit;font-size:14.5px;
+      padding:8px 2px;border-radius:8px;color:var(--muted);cursor:pointer;line-height:1.1;
+    }
+    .gtabs button i{font-style:normal;font-size:10.5px;color:var(--faint);margin-left:3px}
+    .gtabs button.on{background:#fffdf8;box-shadow:var(--shadow);font-weight:600}
+    .gtabs button.on[data-g="der"]{color:var(--der)}
+    .gtabs button.on[data-g="das"]{color:var(--das)}
+    .gtabs button.on[data-g="die"]{color:var(--die)}
+    .col{display:none}
+    body[data-g="der"] .col.g-der{display:block}
+    body[data-g="das"] .col.g-das{display:block}
+    body[data-g="die"] .col.g-die{display:block}
+    body[data-g="der"] .col.hide,body[data-g="das"] .col.hide,body[data-g="die"] .col.hide{display:none}
+  }
+
+  /* proper nouns */
+  .proper{margin-top:26px;border-top:1px solid var(--line);padding-top:16px}
+  .proper h3{margin:0 0 4px;font-size:14px;letter-spacing:.04em}
+  .proper p{margin:0 0 12px;font-size:12px;color:var(--faint)}
+  .proper .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px 18px}
+  .proper .w{border-bottom:1px dotted #e4dccb}
+  .proper .lemma{font-size:16px}
+
+  /* phrase / list sections */
+  .cols2{display:grid;grid-template-columns:repeat(2,1fr);gap:0 26px}
+  .cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 26px}
+  .subhead{grid-column:1/-1;font-size:11.5px;letter-spacing:.12em;color:#8a6d3b;margin:8px 0 2px;text-transform:uppercase}
+
+  /* empty */
+  #empty{display:none;text-align:center;color:var(--faint);padding:60px 0;font-size:14px}
+  body.noresult #empty{display:block}
+
+  /* back to top */
+  #top{
+    position:fixed;right:16px;bottom:18px;width:42px;height:42px;border-radius:50%;
+    border:1px solid #d8cfbc;background:#fffdf8;color:var(--deep);font-size:18px;cursor:pointer;
+    box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s;z-index:70;
+  }
+  #top.on{opacity:1;pointer-events:auto}
+
+  footer{max-width:1180px;margin:0 auto;padding:0 22px 40px;color:var(--faint);font-size:12px;line-height:1.7}
+  footer b{color:var(--muted);font-weight:500}
+
+  @media (max-width:900px){
+    .cols{grid-template-columns:1fr;gap:26px}
+    .proper .grid{grid-template-columns:repeat(2,1fr)}
+    .cols2,.cols3{grid-template-columns:1fr}
+    .stats{gap:16px}
+  }
+  @media (max-width:560px){
+    body{font-size:15px}
+    .hero{padding:26px 0 20px}
+    .hero-in{padding:0 16px}
+    .bar-in{padding:8px 16px}
+    main{padding:20px 16px 70px}
+    footer{padding:0 16px 30px}
+    .lemma{font-size:17px}
+    .spk{width:30px;height:30px;flex-basis:30px}
+    .hint{display:none}
+    .proper .grid{grid-template-columns:repeat(2,1fr);gap:0 12px}
+    .w{padding:9px 0}
+  }
+  @media print{
+    .bar,#top,.spk{display:none}
+    body{background:#fff}
+    .cols{grid-template-columns:repeat(3,1fr)}
+    .w{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <div>
+      <p class="eyebrow">Netzwerk neu A1 · Kapitel 1–12</p>
+      <h1>Wortschatz<small>A1 词汇手册 · 按词性分类 · 点喇叭听发音</small></h1>
+      <a class="planlink" href="lernplan.html">91 天背词计划 →</a> <a class="planlink" href="plan.html">5 天复习计划 →</a>
+    </div>
+    <div class="stats">
+      <div class="stat der"><b id="n-der">0</b><span>der</span></div>
+      <div class="stat das"><b id="n-das">0</b><span>das</span></div>
+      <div class="stat die"><b id="n-die">0</b><span>die</span></div>
+    </div>
+  </div>
+  <div class="tricolor"><i></i><i></i><i></i></div>
+</header>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="搜索德语或中文…" autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+  <div class="bar-chips">
+    <div class="chips" id="units">
+      <button class="chip on" data-u="all">全部</button>
+      <button class="chip" data-u="1">K1</button>
+      <button class="chip" data-u="2">K2</button>
+      <button class="chip" data-u="3">K3</button>
+      <button class="chip" data-u="4">K4</button>
+      <button class="chip" data-u="5">K5</button>
+      <button class="chip" data-u="6">K6</button>
+      <button class="chip" data-u="7">K7</button>
+      <button class="chip" data-u="8">K8</button>
+      <button class="chip" data-u="9">K9</button>
+      <button class="chip" data-u="10">K10</button>
+      <button class="chip" data-u="11">K11</button>
+      <button class="chip" data-u="12">K12</button>
+    </div>
+  </div>
+  <div class="status"><span id="hint"></span></div>
+</div>
+
+<div class="options">
+  <label class="opt"><input type="checkbox" id="keyChk"> 只看重点 <span class="h">♥</span></label>
+  <label class="opt"><input type="checkbox" id="testChk"> 隐藏中文（点词条显示）</label>
+</div>
+
+<main>
+  <section id="nouns">
+    <div class="sec-head"><h2>名词</h2><span class="count" id="c-nouns"></span><span class="note">der · das · die 三栏，复数写在下面</span></div>
+    <div class="gtabs" id="gtabs">
+      <button class="on" data-g="der">der <i></i></button>
+      <button data-g="das">das <i></i></button>
+      <button data-g="die">die <i></i></button>
+    </div>
+    <div class="cols">
+      <div class="col g-der" data-g="der"><div class="col-head col-der"><span class="g">der</span><span class="lab">阳性</span><span class="n"></span></div><div class="list"></div></div>
+      <div class="col g-das" data-g="das"><div class="col-head col-das"><span class="g">das</span><span class="lab">中性</span><span class="n"></span></div><div class="list"></div></div>
+      <div class="col g-die" data-g="die"><div class="col-head col-die"><span class="g">die</span><span class="lab">阴性</span><span class="n"></span></div><div class="list"></div></div>
+    </div>
+    <div class="proper">
+      <h3>专有名词 · 国家与语言</h3>
+      <p>没有冠词，也没有复数；单独记拼写。</p>
+      <div class="grid" id="proper"></div>
+    </div>
+  </section>
+
+  <section id="phrases">
+    <div class="sec-head"><h2>短语</h2><span class="count" id="c-phrases"></span><span class="note">问候、客套与固定搭配</span></div>
+    <div class="cols2" id="phraseList"></div>
+  </section>
+
+  <section id="verbs">
+    <div class="sec-head"><h2>动词</h2><span class="count" id="c-verbs"></span><span class="note">给原形；变位规则另记</span></div>
+    <div class="cols3" id="verbList"></div>
+  </section>
+
+  <section id="adjs">
+    <div class="sec-head"><h2>形容词</h2><span class="count" id="c-adjs"></span></div>
+    <div class="cols3" id="adjList"></div>
+  </section>
+
+  <section id="advs">
+    <div class="sec-head"><h2>副词</h2><span class="count" id="c-advs"></span><span class="note">时间、频率、地点</span></div>
+    <div class="cols2" id="advList"></div>
+  </section>
+
+  <section id="func">
+    <div class="sec-head"><h2>功能词</h2><span class="count" id="c-func"></span><span class="note">冠词、代词、数词、介词、连词、疑问词</span></div>
+    <div class="cols3" id="funcList"></div>
+  </section>
+
+  <div id="empty">没有匹配的词条，换个关键词试试。</div>
+</main>
+
+<footer>
+  <b>用法：</b>点 ♪ 听发音（每个词都有）；点“隐藏中文”进入自测，点词条显示中文；K1–K6 可筛选，♥ 是重点词。<br>
+  词表整理自 <b>Netzwerk neu A1 Kursbuch</b> 第 1–12 单元及书末词表；中文释义供学习参考。
+</footer>
+
+<button id="top" title="回到顶部">↑</button>
+
+<script>
+const DATA = __DATA__;
+</script>
+<script>
+(function(){
+  const $ = s => document.querySelector(s);
+  const heart = '<svg class="heart" viewBox="0 0 24 24" aria-label="重点词"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.3 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg>';
+  const spk = '<svg viewBox="0 0 24 24"><path d="M3 9.5v5h3.6L12 19V5L6.6 9.5H3z"/><path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+
+  const state = {q:'', unit:'all', key:false, test:false};
+  const SP = new URLSearchParams(location.search);
+  if(SP.get('q')) state.q = SP.get('q');
+  if(SP.get('u')) state.unit = SP.get('u');
+  if(SP.get('key')==='1') state.key = true;
+  const groups = {der:[], das:[], die:[], proper:[], phrase:[], verb:[], adj:[], adv:[], func:[]};
+
+  DATA.forEach(e=>{
+    if(e.p === '名'){
+      if(e.sub === '专' || !e.art){ groups.proper.push(e); return; }
+      const a = e.art.split('/')[0];
+      (groups[a] || groups.der).push(e);
+    } else if(e.p === '短' || e.p === '感'){ groups.phrase.push(e); }
+    else if(e.p === '动' || e.p === '情'){ groups.verb.push(e); }
+    else if(e.p === '形'){ groups.adj.push(e); }
+    else if(e.p === '副'){ groups.adv.push(e); }
+    else { groups.func.push(e); }
+  });
+
+  const cmp = (a,b)=> a.de.localeCompare(b.de,'de');
+  Object.values(groups).forEach(a=>a.sort(cmp));
+
+  function row(e, opts={}){
+    const g = e.p==='名' && e.art ? e.art.split('/')[0] : '';
+    const cls = 'w g-'+g;
+    const art = e.art ? '<span class="art">'+e.art+'</span>' : '';
+    const isNoun = e.p==='名' && e.sub!=='专';
+    const pl = (isNoun && e.pl) ? '<div class="pl">Pl. <b>'+e.pl+'</b></div>' : (isNoun ? '<div class="pl">Pl. <b>—</b></div>' : '');
+    const unit = '<span class="unit">K'+e.u+'</span>';
+    const h = e.key ? heart : '';
+    return '<div class="'+cls+'" data-u="'+e.u+'" data-k="'+(e.key?1:0)+'" data-audio="audio/'+e.id+'.m4a" data-de="'+esc(e.de)+'">'+
+      '<button class="spk" aria-label="发音：'+esc(e.de)+'">'+spk+'</button>'+
+      '<div class="body"><div class="top">'+art+'<span class="lemma">'+esc(e.de)+'</span>'+unit+h+'</div>'+pl+'<div class="zh">'+esc(e.zh)+'</div></div>'+
+    '</div>';
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+  function fill(sel, arr, opts){
+    const el = $(sel);
+    el.innerHTML = arr.map(e=>row(e,opts)).join('');
+  }
+  fill('.col.g-der .list', groups.der);
+  fill('.col.g-das .list', groups.das);
+  fill('.col.g-die .list', groups.die);
+  fill('#proper', groups.proper, {small:true});
+  fill('#phraseList', groups.phrase);
+  fill('#verbList', groups.verb);
+  fill('#adjList', groups.adj);
+  fill('#advList', groups.adv);
+  fill('#funcList', groups.func);
+
+  const gt = $('#gtabs');
+  document.body.dataset.g = 'der';
+  gt.querySelectorAll('button').forEach(b=>{
+    const g = b.dataset.g;
+    b.querySelector('i').textContent = groups[g].length;
+    b.addEventListener('click', ()=>{
+      gt.querySelectorAll('button').forEach(x=>x.classList.toggle('on', x===b));
+      document.body.dataset.g = g;
+    });
+  });
+
+  $('#n-der').textContent = groups.der.length;
+  $('#n-das').textContent = groups.das.length;
+  $('#n-die').textContent = groups.die.length;
+  $('#c-nouns').textContent = (groups.der.length+groups.das.length+groups.die.length) + ' 个';
+  $('#c-phrases').textContent = groups.phrase.length + ' 条';
+  $('#c-verbs').textContent = groups.verb.length + ' 个';
+  $('#c-adjs').textContent = groups.adj.length + ' 个';
+  $('#c-advs').textContent = groups.adv.length + ' 个';
+  $('#c-func').textContent = groups.func.length + ' 个';
+  document.querySelectorAll('.col-head .n').forEach(h=>{
+    const g = h.closest('.col').dataset.g;
+    h.textContent = groups[g].length;
+  });
+
+  function norm(s){ return s.toLowerCase().replace(/ß/g,'ss').replace(/ä/g,'a').replace(/ö/g,'o').replace(/ü/g,'u'); }
+
+  function apply(){
+    const q = norm(state.q.trim());
+    let visible = 0;
+    document.querySelectorAll('.w').forEach(w=>{
+      const okQ = !q || norm(w.dataset.de).includes(q) || norm(w.querySelector('.zh').textContent).includes(q);
+      const okU = state.unit==='all' || w.dataset.u===state.unit;
+      const okK = !state.key || w.dataset.k==='1';
+      const ok = okQ && okU && okK;
+      w.classList.toggle('hide', !ok);
+      if(ok) visible++;
+    });
+    document.querySelectorAll('.col').forEach(c=>{
+      c.classList.toggle('hide', !c.querySelector('.w:not(.hide)'));
+    });
+    document.querySelectorAll('section').forEach(s=>{
+      const any = s.querySelector('.w') ? s.querySelector('.w:not(.hide)') : true;
+      s.classList.toggle('hide', !any);
+    });
+    document.body.classList.toggle('noresult', visible===0);
+    $('#hint').textContent = (visible!==DATA.length) ? visible+' / '+DATA.length : '';
+  }
+
+  let t;
+  $('#q').addEventListener('input', e=>{
+    state.q = e.target.value;
+    clearTimeout(t); t = setTimeout(apply, 120);
+  });
+  $('#units').addEventListener('click', e=>{
+    const b = e.target.closest('.chip'); if(!b) return;
+    $('#units').querySelectorAll('.chip').forEach(c=>c.classList.toggle('on', c===b));
+    state.unit = b.dataset.u; apply();
+  });
+  $('#keyChk').addEventListener('change', function(){
+    state.key = this.checked; apply();
+  });
+  $('#testChk').addEventListener('change', function(){
+    state.test = this.checked;
+    document.body.classList.toggle('test', state.test);
+  });
+
+  // reveal Chinese on tap in test mode
+  document.addEventListener('click', e=>{
+    const w = e.target.closest('.w');
+    if(w && state.test && !e.target.closest('.spk')) w.classList.toggle('show');
+  });
+
+  // audio
+  let curAudio = null, curBtn = null;
+  function play(btn){
+    const src = btn.closest('.w').dataset.audio;
+    if(curBtn) curBtn.classList.remove('playing');
+    if(curAudio){ try{ curAudio.pause(); }catch(e){} }
+    curBtn = btn;
+    curAudio = new Audio(src);
+    btn.classList.add('playing');
+    curAudio.addEventListener('ended', ()=>btn.classList.remove('playing'));
+    curAudio.addEventListener('error', ()=>{ btn.classList.remove('playing'); tts(btn.closest('.w').dataset.de); });
+    curAudio.play().catch(()=>{ btn.classList.remove('playing'); tts(btn.closest('.w').dataset.de); });
+  }
+  function tts(text){
+    if(!('speechSynthesis' in window)) return;
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'de-DE'; u.rate = .9;
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+  }
+  document.addEventListener('click', e=>{
+    const b = e.target.closest('.spk'); if(!b) return;
+    e.stopPropagation(); play(b);
+  });
+
+  // back to top
+  const top = $('#top');
+  addEventListener('scroll', ()=>{ top.classList.toggle('on', scrollY>600); }, {passive:true});
+  top.addEventListener('click', ()=>scrollTo({top:0,behavior:'smooth'}));
+
+  if(state.q){ const qi=document.getElementById('q'); qi.value=state.q; }
+  if(state.unit!=='all'){
+    document.querySelectorAll('#units .chip').forEach(c=>c.classList.toggle('on', c.dataset.u===state.unit));
+  }
+  if(state.key){ document.getElementById('keyChk').checked = true; }
+  apply();
+})();
+</script>
+</body>
+</html>

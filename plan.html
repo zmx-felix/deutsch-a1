@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10231d">
+<title>5 天急救 · 德语 1–6 复习计划</title>
+<style>
+  :root{
+    --bg:#f7f2e7; --card:#fffdf8; --ink:#1b2420; --muted:#5f6d66; --faint:#95a09a;
+    --line:#e3dbc9; --green:#0f4a35; --green2:#1a6b4d; --gold:#c98a12; --red:#b23a3a;
+    --der:#2b6cb0; --das:#2f855a; --die:#b23a3a; --shadow:0 1px 2px rgba(27,36,32,.05),0 14px 34px -22px rgba(27,36,32,.4);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+    font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC",serif}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+
+  /* hero */
+  header{background:linear-gradient(150deg,#0c3527 0%,#0f4a35 55%,#17624a 100%);color:#f2eee3;padding:30px 0 26px;position:relative;overflow:hidden}
+  header::after{content:"";position:absolute;right:-80px;bottom:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.07),transparent 70%)}
+  .topline{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .back{color:#cfe0d6;text-decoration:none;font-size:12.5px}
+  .back:hover{color:#fff}
+  .eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#a9c8b7;margin:0 0 10px}
+  h1{margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC",serif;font-size:clamp(34px,5.4vw,52px);font-weight:600;letter-spacing:-.02em;line-height:1.05}
+  header p.sub{margin:10px 0 0;color:#cfe0d6;font-size:14.5px;max-width:36em}
+  .count{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+  .cd{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:8px 14px;min-width:76px;text-align:center}
+  .cd b{display:block;font-family:"Iowan Old Style",Georgia,serif;font-size:26px;line-height:1.1}
+  .cd span{font-size:10.5px;letter-spacing:.1em;color:#b9d2c4}
+  .examdate{font-size:12.5px;color:#a9c8b7;margin-top:12px}
+
+  /* progress */
+  .progress{background:#fffdf8;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:-18px auto 0;max-width:976px;position:relative;z-index:2;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow)}
+  .progress .bar{flex:1;height:8px;background:#eee6d5;border-radius:99px;overflow:hidden}
+  .progress .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green2),#3fa574);border-radius:99px;transition:width .3s}
+  .progress b{font-size:13px;color:var(--green)}
+  .progress small{color:var(--faint);font-size:11.5px}
+
+  main{padding:28px 0 70px}
+  section{margin:0 0 40px}
+  .sec{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+  .sec h2{margin:0;font-family:"Iowan Old Style",Georgia,"Songti SC",serif;font-size:23px;font-weight:600}
+  .sec .note{margin-left:auto;font-size:12px;color:var(--faint)}
+
+  .verdict{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow)}
+  .verdict h3{margin:0 0 8px;font-size:16px}
+  .verdict p{margin:0 0 10px;color:#3d4a44}
+  .verdict p:last-child{margin-bottom:0}
+  .verdict b{color:var(--green)}
+  .warn{border-left:3px solid var(--gold);padding-left:12px;color:#6a5426;font-size:14px}
+
+  /* day cards */
+  .day{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:0 0 14px;box-shadow:var(--shadow);overflow:hidden}
+  .day.today{border-color:#b9d3c2;box-shadow:0 0 0 3px rgba(26,107,77,.08),var(--shadow)}
+  .day-h{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid #eee7d8;background:#fbf7ed;flex-wrap:wrap}
+  .day-h .d{font-family:"Iowan Old Style",Georgia,serif;font-size:18px;font-weight:600;color:var(--green)}
+  .day-h .t{font-size:12px;color:var(--faint)}
+  .day-h .tag{margin-left:auto;font-size:11px;letter-spacing:.06em;color:#8a6d3b;border:1px solid #e0d2b4;border-radius:99px;padding:2px 9px}
+  .day.today .tag{background:var(--gold);border-color:var(--gold);color:#2c2000}
+  .tasks{padding:6px 18px 12px}
+  .task{display:flex;gap:11px;padding:9px 0;border-bottom:1px dotted #e8e0ce;align-items:flex-start}
+  .task:last-child{border-bottom:0}
+  .task input{margin-top:4px;width:16px;height:16px;accent-color:var(--green2);flex:0 0 16px}
+  .task .tx{flex:1;min-width:0}
+  .task .tx b{font-weight:600;font-size:14.5px}
+  .task .tx p{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
+  .task .min{font-size:11px;color:var(--faint);white-space:nowrap;padding-left:8px}
+  .task a{color:var(--green2);text-decoration:none;border-bottom:1px solid #bcd8c8}
+  .task a:hover{border-bottom-color:var(--green2)}
+  .task.done .tx b{text-decoration:line-through;color:#9aa39d}
+
+  /* links row */
+  .quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .qlink{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:inherit;box-shadow:var(--shadow)}
+  .qlink b{display:block;font-size:14px;color:var(--green)}
+  .qlink span{font-size:11.5px;color:var(--faint)}
+
+  /* grammar */
+  .gcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:0 0 12px;box-shadow:var(--shadow)}
+  .gcard h3{margin:0 0 8px;font-size:15px;color:var(--green)}
+  .gcard p{margin:4px 0;font-size:13.5px;color:#3d4a44}
+  .gcard code{background:#f3eddf;border-radius:4px;padding:0 4px;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13px;margin:6px 0}
+  th,td{text-align:left;padding:5px 8px;border-bottom:1px solid #eee7d8}
+  th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:600}
+  td b{font-weight:600}
+  .der{color:var(--der)} .das{color:var(--das)} .die{color:var(--die)}
+  .ex{font-family:"Iowan Old Style",Georgia,serif;font-size:13.5px;color:#2e3a34}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+  /* tactics */
+  .tac{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:12px;box-shadow:var(--shadow)}
+  .tac-h{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#fbf7ed;border-bottom:1px solid #eee7d8}
+  .tac-h b{font-size:14.5px}
+  .tac-h .pts{margin-left:auto;font-size:11.5px;color:var(--faint)}
+  .tac .in{padding:10px 16px 14px}
+  .tac .in p{margin:4px 0;font-size:13.5px;color:#3d4a44}
+  .tac .in b{color:var(--green)}
+
+  .checklist{background:#fff8e6;border:1px solid #ecd9a8;border-radius:14px;padding:16px 18px}
+  .checklist h3{margin:0 0 8px;font-size:15px;color:#7a5c11}
+  .checklist ul{margin:0;padding-left:18px}
+  .checklist li{font-size:13.5px;margin:4px 0}
+
+  footer{border-top:1px solid var(--line);padding:24px 0 50px;color:var(--faint);font-size:12px}
+  footer a{color:var(--green2)}
+
+  @media (max-width:760px){
+    .quick{grid-template-columns:1fr}
+    .two{grid-template-columns:1fr}
+    .progress{flex-wrap:wrap;gap:8px}
+    .task .min{display:none}
+    .day-h .tag{margin-left:0}
+  }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div class="sitebar">
+  <a class="brand" href="lernen.html">Deutsch A1</a>
+  <nav>
+    <a href="lernen.html">学习中心</a>
+    <a href="vocab.html">词汇</a>
+    <a href="lernplan.html">背词计划</a>
+    <a href="sprechen.html">口语</a>
+    <a href="a1-verben.html">不规则动词</a>
+    <a class="on" href="plan.html">5 天急救</a>
+    <a href="12-wochen.html">12 周计划</a>
+  </nav>
+</div>
+<header>
+  <div class="wrap">
+    <div class="topline">
+      <a class="back" href="lernen.html">← 学习中心</a>
+      <span class="back">Netzwerk neu A1 · Kapitel 1–6</span>
+    </div>
+    <p class="eyebrow" style="margin-top:18px">5-Tage-Crashkurs · 德语 1–6</p>
+    <h1>5 天急救计划</h1>
+    <p class="sub">1–6 的 953 个词，只背 <b>179 个重点词</b> + 6 张语法表 + 3 种题型。每天 3 小时，周二上午只过错题。</p>
+    <div class="count">
+      <div class="cd"><b id="cd-d">–</b><span>天</span></div>
+      <div class="cd"><b id="cd-h">–</b><span>小时</span></div>
+      <div class="cd"><b id="cd-m">–</b><span>分钟</span></div>
+    </div>
+    <div class="examdate">考试：2026 年 11 月 17 日（周二）· 只考笔试，不考口语</div>
+  </div>
+</header>
+
+<div class="progress">
+  <b id="pct">0%</b>
+  <div class="bar"><i id="bar"></i></div>
+  <small id="ptext">0 / 0 已完成</small>
+</div>
+
+<main class="wrap">
+
+  <section>
+    <div class="sec"><h2>先看结论</h2><span class="note">30 秒读完，再开始</span></div>
+    <div class="verdict">
+      <h3>你的情况：5–6 单元有底，1–4 单元空，5 天，不考口语</h3>
+      <p><b>策略：放弃“背完”，改成“认得 + 会用”。</b>1–4 单元的词表有 700 多个，但考试真正反复用的只有 150 个左右；你只需要做到：看到认得、听到能选、写得出常用 30 个。</p>
+      <p><b>时间分配：单词 40% · 语法 35% · 题型 25%。</b>语法是 1–4 单元最值得补的，因为它是有限清单，5 天能补完；单词永远补不完。</p>
+      <p class="warn">不要做：从 A 开始背完整词表；重学 5–6 单元语法；花时间练口语；写很长的作文。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>马上打开</h2><span class="note">按单元筛重点词</span></div>
+    <div class="quick">
+      <a class="qlink" href="vocab.html?u=1&key=1"><b>K1 重点 18 词</b><span>问候、国家、数字 1–20</span></a>
+      <a class="qlink" href="vocab.html?u=2&key=1"><b>K2 重点 21 词</b><span>爱好、职业、星期</span></a>
+      <a class="qlink" href="vocab.html?u=3&key=1"><b>K3 重点 9 词</b><span>城市、交通、方向</span></a>
+      <a class="qlink" href="vocab.html?u=4&key=1"><b>K4 重点 29 词</b><span>食物、购物、价格</span></a>
+      <a class="qlink" href="vocab.html?u=5&key=1"><b>K5 重点 45 词</b><span>时间、家庭、情态动词</span></a>
+      <a class="qlink" href="vocab.html?u=6&key=1"><b>K6 重点 57 词</b><span>日期、邀请、可分动词</span></a>
+    </div>
+  </section>
+
+  <section id="plan">
+    <div class="sec"><h2>5 天怎么过</h2><span class="note">勾选框会保存在本机</span></div>
+
+    <div class="day" data-date="2026-11-12">
+      <div class="day-h"><span class="d">周四 11/12</span><span class="t">今天 · 3 小时</span><span class="tag">Day 1 · 摸底 + K1</span></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-id="d1t1"><div class="tx"><b>摸底：Goethe 样题 Lesen Teil 1 + Hören Teil 1</b><p>限时做，先知道自己错在哪；对答案，把不会的词圈出来，不查意思。</p></div><span class="min">30′</span></label>
+        <label class="task"><input type="checkbox" data-id="d1t2"><div class="tx"><b>K1 重点 18 词 + 问候/介绍句</b><p><a href="vocab.html?u=1&key=1" target="_blank">打开 K1 重点词</a>：先遮中文自测，再逐个点发音跟读。重点句：<span class="ex">Wie heißt du? · Woher kommst du? · Ich komme aus …</span></p></div><span class="min">40′</span></label>
+        <label class="task"><input type="checkbox" data-id="d1t3"><div class="tx"><b>语法：现在时变位 + sein/haben + W-问句</b><p>看下面「语法急救」第 1、2 张表；每个变位抄 3 遍，造句 5 句。</p></div><span class="min">50′</span></label>
+        <label class="task"><input type="checkbox" data-id="d1t4"><div class="tx"><b>自测：遮住中文过一遍 K1</b><p>说不出来的画圈，明天早上只看圈。</p></div><span class="min">20′</span></label>
+      </div>
+    </div>
+
+    <div class="day" data-date="2026-11-13">
+      <div class="day-h"><span class="d">周五 11/13</span><span class="t">3 小时</span><span class="tag">Day 2 · K2 + 冠词</span></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-id="d2t1"><div class="tx"><b>K2 重点 21 词 + 数字 20–1000 + 星期</b><p><a href="vocab.html?u=2&key=1" target="_blank">K2 重点词</a>；数字要求听到能写：<span class="ex">21 einundzwanzig · 100 hundert · 1000 tausend</span></p></div><span class="min">40′</span></label>
+        <label class="task"><input type="checkbox" data-id="d2t2"><div class="tx"><b>语法：der/das/die + 复数 + ja/nein 问句</b><p>语法表第 2、3 张；记复数 5 种词尾，不要逐个背。</p></div><span class="min">50′</span></label>
+        <label class="task"><input type="checkbox" data-id="d2t3"><div class="tx"><b>Lesen Teil 2 + Teil 3 各一篇</b><p>先读题干再读文章；不认识的词跳过，靠关键词定位。</p></div><span class="min">40′</span></label>
+        <label class="task"><input type="checkbox" data-id="d2t4"><div class="tx"><b>错题 10 分钟</b><p>只抄“错的原因”，不抄整题。</p></div><span class="min">10′</span></label>
+      </div>
+    </div>
+
+    <div class="day" data-date="2026-11-14">
+      <div class="day-h"><span class="d">周六 11/14</span><span class="t">3 小时</span><span class="tag">Day 3 · K3 + 命令式</span></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-id="d3t1"><div class="tx"><b>K3 重点 9 词 + 城市/交通/方向</b><p><a href="vocab.html?u=3&key=1" target="_blank">K3 重点词</a>；方向句：<span class="ex">Gehen Sie rechts / links / geradeaus.</span></p></div><span class="min">40′</span></label>
+        <label class="task"><input type="checkbox" data-id="d3t2"><div class="tx"><b>语法：ein/kein + 命令式 Sie + 形容词 + sein</b><p>语法表第 2、4 张；命令式只记 Sie 形式：<span class="ex">Gehen Sie! · Nehmen Sie! · Sein Sie …</span></p></div><span class="min">50′</span></label>
+        <label class="task"><input type="checkbox" data-id="d3t3"><div class="tx"><b>Hören Teil 2 + Teil 3</b><p>听前先看选项；数字、价格、时间经常改口，听到 <span class="ex">nicht … sondern …</span> 立刻警惕。</p></div><span class="min">40′</span></label>
+        <label class="task"><input type="checkbox" data-id="d3t4"><div class="tx"><b>自测 K1–K3 重点词</b><p>用词表页的「只看重点 + 隐藏中文」，一次过三单元。</p></div><span class="min">20′</span></label>
+      </div>
+    </div>
+
+    <div class="day" data-date="2026-11-15">
+      <div class="day-h"><span class="d">周日 11/15</span><span class="t">3 小时</span><span class="tag">Day 4 · K4 + 四格</span></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-id="d4t1"><div class="tx"><b>K4 重点 29 词 + 食物/购物/价格</b><p><a href="vocab.html?u=4&key=1" target="_blank">K4 重点词</a>；价格句型：<span class="ex">Was kostet …? · Das kostet 3,50 Euro.</span></p></div><span class="min">40′</span></label>
+        <label class="task"><input type="checkbox" data-id="d4t2"><div class="tx"><b>语法：Akkusativ + mögen/möchten + 语序</b><p>语法表第 3、5 张；只记 <b>der→den, ein→einen, kein→keinen</b>，das/die/复数不变。</p></div><span class="min">50′</span></label>
+        <label class="task"><input type="checkbox" data-id="d4t3"><div class="tx"><b>Schreiben Teil 1 + Teil 2 模板</b><p>Teil 1 填表 5 项；Teil 2 写 3 句话：<b>问候 → 说事 → 问/约</b>。背一个万能模板。</p></div><span class="min">40′</span></label>
+        <label class="task"><input type="checkbox" data-id="d4t4"><div class="tx"><b>错题 15 分钟</b><p>把 K1–K4 的错词写成一张 A4，明天只带这张。</p></div><span class="min">15′</span></label>
+      </div>
+    </div>
+
+    <div class="day" data-date="2026-11-16">
+      <div class="day-h"><span class="d">周一 11/16</span><span class="t">3 小时 · 模考日</span><span class="tag">Day 5 · 模考</span></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-id="d5t1"><div class="tx"><b>K5–K6 重点 102 词快速过</b><p><a href="vocab.html?u=5&key=1" target="_blank">K5</a> + <a href="vocab.html?u=6&key=1" target="_blank">K6</a>；只过重点，不背新词。</p></div><span class="min">50′</span></label>
+        <label class="task"><input type="checkbox" data-id="d5t2"><div class="tx"><b>语法：情态动词 + 可分动词 + war/hatte</b><p>语法表第 6 张；情态动词放第二位，动词去句末；可分前缀去句末。</p></div><span class="min">40′</span></label>
+        <label class="task"><input type="checkbox" data-id="d5t3"><div class="tx"><b>完整模考：Lesen 25′ + Hören 20′ + Schreiben 20′</b><p>严格计时，不查词、不暂停。用 Goethe 样题。</p></div><span class="min">65′</span></label>
+        <label class="task"><input type="checkbox" data-id="d5t4"><div class="tx"><b>对答案 + 错题本</b><p>算分：三部分各 25 分，60% 即及格线附近。只订正错题，不再学新东西。</p></div><span class="min">25′</span></label>
+      </div>
+    </div>
+
+    <div class="day" data-date="2026-11-17">
+      <div class="day-h"><span class="d">周二 11/17</span><span class="t">考试日 · 只做三件事</span><span class="tag">考试</span></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-id="d6t1"><div class="tx"><b>早起 30 分钟：过错题本 + 高频 50 词</b><p>不要开新词表；只看昨天那张 A4。</p></div><span class="min">30′</span></label>
+        <label class="task"><input type="checkbox" data-id="d6t2"><div class="tx"><b>进场前：默念三条策略</b><p>Lesen 先看题；Hören 先看选项；Schreiben 套模板，写短句。</p></div><span class="min">5′</span></label>
+        <label class="task"><input type="checkbox" data-id="d6t3"><div class="tx"><b>提前 30 分钟到，带证件和笔</b><p>迟到不进考场；手机关机放包里。</p></div><span class="min">—</span></label>
+      </div>
+    </div>
+  </section>
+
+  <section id="grammar">
+    <div class="sec"><h2>语法急救 · 6 张表</h2><span class="note">1–4 单元 + 5–6 单元只补考点</span></div>
+
+    <div class="gcard">
+      <h3>1. 现在时：动词变位</h3>
+      <table>
+        <tr><th></th><th>ich</th><th>du</th><th>er/sie/es</th><th>wir</th><th>ihr</th><th>sie/Sie</th></tr>
+        <tr><td>规则（wohnen）</td><td>wohne</td><td>wohnst</td><td>wohnt</td><td>wohnen</td><td>wohnt</td><td>wohnen</td></tr>
+        <tr><td><b>sein</b></td><td>bin</td><td>bist</td><td>ist</td><td>sind</td><td>seid</td><td>sind</td></tr>
+        <tr><td><b>haben</b></td><td>habe</td><td>hast</td><td>hat</td><td>haben</td><td>habt</td><td>haben</td></tr>
+        <tr><td>fahren</td><td>fahre</td><td>fährst</td><td>fährt</td><td>fahren</td><td>fahrt</td><td>fahren</td></tr>
+        <tr><td>sprechen</td><td>spreche</td><td>sprichst</td><td>spricht</td><td>sprechen</td><td>sprecht</td><td>sprechen</td></tr>
+        <tr><td>lesen</td><td>lese</td><td>liest</td><td>liest</td><td>lesen</td><td>lest</td><td>lesen</td></tr>
+        <tr><td>essen</td><td>esse</td><td>isst</td><td>isst</td><td>essen</td><td>esst</td><td>essen</td></tr>
+        <tr><td>nehmen</td><td>nehme</td><td>nimmst</td><td>nimmt</td><td>nehmen</td><td>nehmt</td><td>nehmen</td></tr>
+      </table>
+      <p><b>只记两个位置：</b>du 和 er/sie/es 换音，其余用原形；ihr 不换音（ihr fahrt / sprecht / esst）。</p>
+    </div>
+
+    <div class="gcard">
+      <h3>2. 名词：冠词 + 复数</h3>
+      <table>
+        <tr><th>性</th><th>定冠词</th><th>不定冠词</th><th>否定</th><th>复数词尾</th></tr>
+        <tr><td class="der">阳性</td><td>der</td><td>ein</td><td>kein</td><td>-e / -er / -n / -s / ¨</td></tr>
+        <tr><td class="das">中性</td><td>das</td><td>ein</td><td>kein</td><td>-e / -er / -n / -s / ¨</td></tr>
+        <tr><td class="die">阴性</td><td>die</td><td>eine</td><td>keine</td><td>-e / -en / -n / -s / ¨</td></tr>
+      </table>
+      <p><b>复数只记 5 组例子：</b><span class="ex">der Tisch → die Tische · das Kind → die Kinder · die Frau → die Frauen · das Auto → die Autos · der Apfel → die Äpfel</span></p>
+      <p><b>性别小规律：</b>-ung/-heit/-keit/-schaft/-e 多为 die；-chen/-ment/-um 多为 das；-er/-en 多为 der（但 die Lehrerin 除外）。</p>
+    </div>
+
+    <div class="gcard">
+      <h3>3. 四格 Akkusativ（K4 核心）</h3>
+      <table>
+        <tr><th></th><th>Nominativ</th><th>Akkusativ</th></tr>
+        <tr><td class="der">阳性</td><td>der / ein / kein</td><td><b>den / einen / keinen</b></td></tr>
+        <tr><td class="das">中性</td><td>das / ein / kein</td><td>das / ein / kein</td></tr>
+        <tr><td class="die">阴性</td><td>die / eine / keine</td><td>die / eine / keine</td></tr>
+        <tr><td>复数</td><td>die / – / keine</td><td>die / – / keine</td></tr>
+      </table>
+      <p><b>只变阳性！</b> <span class="ex">Ich habe <b>den</b> Schlüssel. · Ich kaufe <b>einen</b> Apfel. · Ich trinke <b>keinen</b> Kaffee.</span></p>
+      <p><b>常带四格的动词：</b>haben, brauchen, kaufen, essen, trinken, nehmen, möchten, suchen, finden, lesen, schreiben.</p>
+    </div>
+
+    <div class="gcard">
+      <h3>4. 句子结构 + 问句 + 命令式</h3>
+      <p><b>陈述句：</b>动词永远第二位。<span class="ex">Ich <b>wohne</b> in Berlin. · Heute <b>arbeite</b> ich.</span></p>
+      <p><b>W-问句：</b>疑问词 + 动词 + 主语。<span class="ex">Wo <b>wohnst</b> du? · Was <b>machst</b> du?</span></p>
+      <p><b>Ja/Nein 问句：</b>动词第一位。<span class="ex"><b>Kommst</b> du? · <b>Hast</b> du Zeit?</span></p>
+      <p><b>命令式 Sie：</b>动词 + Sie。<span class="ex">Gehen Sie! · Nehmen Sie! · Wiederholen Sie!</span></p>
+      <p><b>情态动词：</b>情态动词第二位，实义动词句末。<span class="ex">Ich <b>muss</b> heute <b>arbeiten</b>. · <b>Kannst</b> du <b>kommen</b>?</span></p>
+      <p><b>可分动词：</b>前缀句末。<span class="ex">Ich <b>stehe</b> um 7 <b>auf</b>. · Wir <b>laden</b> dich <b>ein</b>.</span></p>
+    </div>
+
+    <div class="gcard">
+      <h3>5. 时间、数字、价格</h3>
+      <p><b>时间：</b><span class="ex">um 8 Uhr · am Montag · am 17. November · von 9 bis 12 Uhr</span></p>
+      <p><b>价格：</b><span class="ex">3,50 € = drei Euro fünfzig · Was kostet das?</span></p>
+      <p><b>数字：</b>13 dreizehn / 30 dreißig / 14 vierzehn / 40 vierzig；21 = einundzwanzig（先个位后十位）。</p>
+    </div>
+
+    <div class="gcard">
+      <h3>6. 5–6 单元只补三个点</h3>
+      <p><b>情态动词：</b>müssen / können / wollen / möchten（ich 和 er 同形：ich muss, er muss）。</p>
+      <p><b>过去时：</b>war / hatte（<span class="ex">Ich war zu Hause. · Ich hatte keine Zeit.</span>）。</p>
+      <p><b>日期：</b>am + 序数：<span class="ex">am ersten · am dritten · am 17.</span></p>
+    </div>
+  </section>
+
+  <section id="tactics">
+    <div class="sec"><h2>题型急救</h2><span class="note">按 Goethe A1 笔试结构</span></div>
+
+    <div class="tac">
+      <div class="tac-h"><b>Lesen · 25 分钟</b><span class="pts">3 部分 / 25 分</span></div>
+      <div class="in">
+        <p><b>Teil 1：</b>5 个短情景配 10 个广告/告示。先看情景关键词（时间、地点、要做什么），再扫广告。</p>
+        <p><b>Teil 2：</b>一篇短文 + 判断/选择。先读题，再回文章找同义改写，不要逐字翻译。</p>
+        <p><b>Teil 3：</b>告示/通知 + 选择。注意 <span class="ex">nicht, nur, ab, bis, geschlossen</span> 这些小词，答案常在这里。</p>
+        <p><b>时间：</b>每部分 8 分钟，留 1 分钟检查答题卡。</p>
+      </div>
+    </div>
+
+    <div class="tac">
+      <div class="tac-h"><b>Hören · 20 分钟</b><span class="pts">3 部分 / 25 分</span></div>
+      <div class="in">
+        <p>录音只放两遍（Teil 2 只一遍）。<b>播放前</b>先读选项，圈出数字、时间、地点。</p>
+        <p>数字/价格/时间经常先给一个再改口：听到 <span class="ex">nicht … sondern …</span>、<span class="ex">lieber</span> 立刻改答案。</p>
+        <p>没听清就放弃，马上看下一题；不要纠结上一题。</p>
+      </div>
+    </div>
+
+    <div class="tac">
+      <div class="tac-h"><b>Schreiben · 20 分钟</b><span class="pts">2 部分 / 25 分</span></div>
+      <div class="in">
+        <p><b>Teil 1（填表）：</b>5 个空，抄清楚，注意大小写和数字格式。</p>
+        <p><b>Teil 2（短消息）：</b>3 个要点，写 3–4 句就够，句子越短越不容易错。</p>
+        <p><b>万能模板：</b><span class="ex">Liebe/Lieber …, ich schreibe dir, weil … Am Samstag um 15 Uhr … Kommst du auch? Viele Grüße, …</span></p>
+        <p>不确定的语法就不要用；用现在时 + 简单句。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>最后 24 小时</h2></div>
+    <div class="checklist">
+      <h3>周一晚上到周二早上，只做这些</h3>
+      <ul>
+        <li>过错题本 2 遍：只过错因，不抄题。</li>
+        <li>把 179 个重点词里还画圈的过一遍，其余放弃。</li>
+        <li>背 3 个作文模板句 + 10 个高频动词变位。</li>
+        <li>23:00 前睡；考试当天早餐吃好，提前 30 分钟到。</li>
+        <li>进考场前不要和同学对答案、不要翻新词。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec"><h2>资料</h2></div>
+    <div class="quick">
+      <a class="qlink" href="goethe-a1-muster.pdf" target="_blank"><b>Goethe A1 样题（PDF）</b><span>Lesen / Hören / Schreiben 全套</span></a>
+      <a class="qlink" href="goethe-a1-wortliste.pdf" target="_blank"><b>Goethe A1 官方词表</b><span>约 650 词，查漏用</span></a>
+      <a class="qlink" href="vocab.html"><b>A1 词汇手册</b><span>953 词 · 发音 · 三性分栏</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  计划按“5 天 × 3 小时”设计；如果某天只有 1 小时，优先做当天第 1 项（单词）和第 3 项（题型），语法表留到第二天早上。<br>
+  词表与发音：<a href="vocab.html">A1 词汇手册</a> · 题目：Goethe-Zertifikat A1 样题。
+</footer>
+
+<script>
+(function(){
+  var exam = new Date('2026-11-17T08:00:00+08:00').getTime();
+  function tick(){
+    var d = exam - Date.now();
+    if(d < 0) d = 0;
+    var days = Math.floor(d/86400000);
+    var hrs = Math.floor(d%86400000/3600000);
+    var min = Math.floor(d%3600000/60000);
+    document.getElementById('cd-d').textContent = days;
+    document.getElementById('cd-h').textContent = hrs;
+    document.getElementById('cd-m').textContent = min;
+  }
+  tick(); setInterval(tick, 30000);
+
+  var today = new Date();
+  var iso = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+  document.querySelectorAll('.day').forEach(function(el){
+    if(el.getAttribute('data-date') === iso) el.classList.add('today');
+  });
+
+  var KEY = 'a1_plan_v1';
+  var saved = {};
+  try{ saved = JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ saved = {}; }
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.task input[type=checkbox]'));
+  boxes.forEach(function(b){
+    if(saved[b.dataset.id]){
+      b.checked = true;
+      b.closest('.task').classList.add('done');
+    }
+    b.addEventListener('change', function(){
+      saved[b.dataset.id] = b.checked;
+      b.closest('.task').classList.toggle('done', b.checked);
+      localStorage.setItem(KEY, JSON.stringify(saved));
+      update();
+    });
+  });
+  function update(){
+    var done = boxes.filter(function(b){ return b.checked; }).length;
+    var pct = boxes.length ? Math.round(done*100/boxes.length) : 0;
+    document.getElementById('pct').textContent = pct+'%';
+    document.getElementById('bar').style.width = pct+'%';
+    document.getElementById('ptext').textContent = done+' / '+boxes.length+' 已完成';
+  }
+  update();
+})();
+</script>
+</body>
+</html>

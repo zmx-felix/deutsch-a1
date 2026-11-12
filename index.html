@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b2b20">
+<title>Deutsch A1 · 学习站</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#0b2b20;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",Roboto,sans-serif}
+  header{position:fixed;top:0;left:0;right:0;height:48px;z-index:10;background:#0b2b20;color:#fff;
+    display:flex;align-items:center;gap:10px;padding:0 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .brand{font-weight:600;font-size:13px;letter-spacing:.03em;white-space:nowrap;color:#fff;text-decoration:none}
+  .brand::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#e8b23c;margin-right:7px;vertical-align:1px}
+  nav{display:flex;gap:3px;margin-left:auto;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  nav::-webkit-scrollbar{display:none}
+  nav button{border:0;background:transparent;color:#c3d6ca;font:inherit;font-size:12.5px;padding:7px 10px;border-radius:7px;white-space:nowrap;cursor:pointer}
+  nav button.on{background:rgba(243,201,106,.12);color:#f3c96a}
+  iframe{position:fixed;top:48px;left:0;width:100%;height:calc(100% - 48px);border:0;background:#f7f2e7}
+  @media (max-width:520px){
+    header{padding:0 8px;gap:6px}
+    .brand{font-size:12px}
+    nav button{font-size:12px;padding:7px 8px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="lernen.html" target="_self">Deutsch A1</a>
+  <nav id="tabs">
+    <button data-src="lernplan.html" class="on">背词</button>
+    <button data-src="vocab.html">词汇</button>
+    <button data-src="sprechen.html">口语</button>
+    <button data-src="a1-verben.html">动词</button>
+    <button data-src="12-wochen.html">12 周</button>
+    <button data-src="plan.html">5 天</button>
+    <button data-src="lernen.html">中心</button>
+  </nav>
+</header>
+<iframe id="frame" src="lernplan.html" title="Deutsch A1"></iframe>
+<script>
+(function(){
+  var frame=document.getElementById('frame');
+  var tabs=[].slice.call(document.querySelectorAll('#tabs button'));
+  var cur='lernplan.html';
+  try{ var s=localStorage.getItem('a1_tab'); if(s){cur=s;} }catch(e){}
+  function setTab(src, save){
+    cur=src;
+    tabs.forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-src')===src); });
+    if(frame.getAttribute('src')!==src) frame.setAttribute('src',src);
+    if(save){ try{ localStorage.setItem('a1_tab',src); }catch(e){} }
+  }
+  tabs.forEach(function(b){
+    b.addEventListener('click',function(){ setTab(b.getAttribute('data-src'), true); });
+  });
+  setTab(cur, false);
+  frame.addEventListener('load', function(){
+    try{
+      var d=frame.contentDocument;
+      if(!d) return;
+      var bar=d.querySelector('.sitebar');
+      if(bar) bar.remove();
+      var top=d.getElementById('top');
+      if(top) top.style.bottom='16px';
+    }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
