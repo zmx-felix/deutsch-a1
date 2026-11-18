@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0c3527">
-<title>A1 背词计划 · 1686 词 · 91 天</title>
+<title>A1 背词计划 · 1884 词 · 100 天</title>
 <link rel="stylesheet" href="site.css">
 <style>
   :root{
@@ -115,8 +115,8 @@
 <header class="hero">
   <div class="wrap">
     <p class="eyebrow">Wortschatz A1 · 1–12</p>
-    <h1>91 天背完 A1</h1>
-    <p class="lead">全册 <b>1686</b> 个词条，按单元拆成 <b>91 天</b>；每天 <b>20 个新词</b> + 复习 + <b>1 句口语</b>。先认得，再会用。</p>
+    <h1>100 天背完 A1</h1>
+    <p class="lead">全册 <b>1884</b> 个词条，按单元拆成 <b>100 天</b>；每天 <b>20 个新词</b> + 复习 + <b>1 句口语</b>。先认得，再会用。</p>
     <div class="metaline">
       <span>每天 <b>35 分钟</b></span>
       <span>重点词 <b>465</b> 个</span>
@@ -128,7 +128,7 @@
 <div class="progress">
   <b id="pct">0%</b>
   <div class="bar"><i id="bar"></i></div>
-  <small id="ptext">0 / 91 天完成</small>
+  <small id="ptext">0 / 100 天完成</small>
 </div>
 
 <main class="wrap">
@@ -145,7 +145,7 @@
   </section>
 
   <section id="plan">
-    <div class="sec"><h2>91 天计划</h2><span class="note">按单元顺序，勾选会保存</span></div>
+    <div class="sec"><h2>100 天计划</h2><span class="note">按单元顺序，勾选会保存</span></div>
     <div id="planList"></div>
   </section>
 
@@ -172,21 +172,21 @@
 
 <script>
 const UNITS = [
- {u:1,n:169,k:18,t:"Guten Tag! · 问候与介绍",s:[
+ {u:1,n:188,k:18,t:"Guten Tag! · 问候与介绍",s:[
   ["Ich heiße Anna und komme aus China.","我叫安娜，来自中国。"],
   ["Ich wohne in Berlin.","我住在柏林。"],
   ["Ich spreche Chinesisch, Deutsch und Englisch.","我说中文、德语和英语。"],
   ["Wie geht es dir? — Danke, gut.","你好吗？——谢谢，很好。"],
   ["Das ist mein Freund.","这是我的朋友。"],
   ["Meine Telefonnummer ist null eins sieben drei.","我的电话是 0173。"]]},
- {u:2,n:202,k:21,t:"Freunde und Kollegen · 爱好与职业",s:[
+ {u:2,n:238,k:21,t:"Freunde und Kollegen · 爱好与职业",s:[
   ["Ich arbeite als Lehrer.","我当老师。"],
   ["Ich habe am Wochenende frei.","我周末有空。"],
   ["Ich lese gern Bücher und höre gern Musik.","我喜欢读书、听音乐。"],
   ["Wann hast du Zeit?","你什么时候有空？"],
   ["Ich fahre gern Fahrrad.","我喜欢骑自行车。"],
   ["Am Montag gehe ich ins Kino.","周一我去看电影。"]]},
- {u:3,n:142,k:9,t:"In Hamburg · 城市与交通",s:[
+ {u:3,n:159,k:9,t:"In Hamburg · 城市与交通",s:[
   ["Entschuldigung, wo ist der Bahnhof?","请问，火车站在哪里？"],
   ["Gehen Sie geradeaus und dann rechts.","一直走，然后右转。"],
   ["Ich fahre mit dem Bus zur Arbeit.","我坐公交车上班。"],
@@ -200,56 +200,56 @@ const UNITS = [
   ["Ich esse gern Gemüse.","我喜欢吃蔬菜。"],
   ["Das schmeckt sehr gut.","这很好吃。"],
   ["Haben Sie noch Äpfel?","您还有苹果吗？"]]},
- {u:5,n:121,k:57,t:"Alltag und Familie · 日常与家庭",s:[
+ {u:5,n:139,k:57,t:"Alltag und Familie · 日常与家庭",s:[
   ["Ich stehe um sieben Uhr auf.","我七点起床。"],
   ["Ich muss heute arbeiten.","我今天必须工作。"],
   ["Kannst du am Freitag kommen?","你周五能来吗？"],
   ["Ich habe keine Zeit.","我没有时间。"],
   ["Meine Familie wohnt in Shanghai.","我家住在上海。"],
   ["Wir treffen uns um acht.","我们八点见。"]]},
- {u:6,n:121,k:45,t:"Zeit mit Freunden · 时间与朋友",s:[
+ {u:6,n:141,k:45,t:"Zeit mit Freunden · 时间与朋友",s:[
   ["Ich habe am dritten Mai Geburtstag.","我五月三日生日。"],
   ["Wir laden dich herzlich ein.","我们热情邀请你。"],
   ["Kommst du am Samstag zur Party?","你周六来参加聚会吗？"],
   ["Ich war gestern im Restaurant.","我昨天在餐馆。"],
   ["Ich hatte viel Spaß.","我玩得很开心。"],
   ["Viele Grüße aus Berlin.","来自柏林的问候。"]]},
- {u:7,n:111,k:40,t:"Arbeitsalltag · 工作日常",s:[
+ {u:7,n:131,k:40,t:"Arbeitsalltag · 工作日常",s:[
   ["Ich arbeite bei einer Firma in Hamburg.","我在汉堡一家公司工作。"],
   ["Ich fahre mit dem Zug zur Arbeit.","我坐火车上班。"],
   ["Kannst du mir bitte helfen?","你能帮我一下吗？"],
   ["Das Buch gehört mir.","这本书是我的。"],
   ["Nach der Arbeit gehe ich einkaufen.","下班后我去购物。"],
   ["Ich spreche morgen mit meinem Chef.","我明天和老板谈。"]]},
- {u:8,n:143,k:59,t:"Fit und gesund · 身体与健康",s:[
+ {u:8,n:165,k:59,t:"Fit und gesund · 身体与健康",s:[
   ["Ich fühle mich nicht gut.","我感觉不舒服。"],
   ["Mein Kopf tut weh.","我头疼。"],
   ["Du sollst mehr Wasser trinken.","你应该多喝水。"],
   ["Ich darf heute nicht raus.","我今天不能出门。"],
   ["Gehen Sie zum Arzt!","去看医生！"],
   ["Gute Besserung!","祝你早日康复！"]]},
- {u:9,n:119,k:54,t:"Meine Wohnung · 住房",s:[
+ {u:9,n:130,k:54,t:"Meine Wohnung · 住房",s:[
   ["Ich wohne in einer kleinen Wohnung.","我住在一间小公寓。"],
   ["Die Wohnung hat zwei Zimmer.","这套房子有两个房间。"],
   ["Der Schrank steht im Schlafzimmer.","衣柜在卧室里。"],
   ["Die Miete ist zu teuer.","房租太贵了。"],
   ["Ich stelle die Bücher ins Regal.","我把书放到书架上。"],
   ["Im Wohnzimmer gibt es ein Sofa.","客厅里有一个沙发。"]]},
- {u:10,n:95,k:32,t:"Studium und Beruf · 学习与职业",s:[
+ {u:10,n:102,k:32,t:"Studium und Beruf · 学习与职业",s:[
   ["Ich habe Informatik studiert.","我学过计算机。"],
   ["Ich habe zwei Jahre als Praktikant gearbeitet.","我做过两年实习生。"],
   ["Ich bewerbe mich um eine Stelle.","我在申请一个职位。"],
   ["Mein Traumjob ist Lehrer.","我的梦想职业是老师。"],
   ["Ich kann gut mit Menschen arbeiten.","我擅长和人打交道。"],
   ["Seit 2020 lerne ich Deutsch.","我从 2020 年开始学德语。"]]},
- {u:11,n:134,k:50,t:"Kleidung und Einkaufen · 衣物与购物",s:[
+ {u:11,n:149,k:50,t:"Kleidung und Einkaufen · 衣物与购物",s:[
   ["Ich habe eine Jacke gekauft.","我买了一件夹克。"],
   ["Das passt mir sehr gut.","这很适合我。"],
   ["Die Farbe gefällt mir.","我喜欢这个颜色。"],
   ["Wie viel kostet das Hemd?","这件衬衫多少钱？"],
   ["Ich möchte das umtauschen.","我想换这个。"],
   ["Die Schuhe sind zu klein.","这双鞋太小了。"]]},
- {u:12,n:131,k:51,t:"Reisen · 旅行",s:[
+ {u:12,n:144,k:51,t:"Reisen · 旅行",s:[
   ["Ich fahre im Sommer nach Deutschland.","我夏天去德国。"],
   ["Ich habe schon ein Hotel gebucht.","我已经订了酒店。"],
   ["Der Zug fährt um neun Uhr.","火车九点开。"],

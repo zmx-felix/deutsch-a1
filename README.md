@@ -2,6 +2,8 @@
 
 A1 German vocabulary learning site (Netzwerk neu, K1–K12).
 
+当前收录 1884 个词条，按课本附录词表逐词核对。
+
 ## 改良内容
 
 - 每个词条都增加了德语例句和中文翻译。
