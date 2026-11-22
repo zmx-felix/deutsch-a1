@@ -115,7 +115,7 @@
   .ghead .lab{font-weight:700;font-size:15px;background:var(--deep);color:#fff;border-radius:7px;padding:2px 8px;flex:0 0 auto}
   .ghead .sc{font-size:12px;color:var(--muted);line-height:1.4;padding-top:2px}
   .ghead .gstudy{margin-left:auto;flex:0 0 auto;font-size:12px;border:1px solid var(--line);background:var(--card);border-radius:8px;padding:4px 9px;white-space:nowrap}
-  .wrow{display:flex;align-items:center;gap:11px;padding:9px 4px;border-bottom:1px solid #efe8d8;cursor:pointer}
+  .wrow{display:flex;align-items:center;gap:9px;padding:9px 4px;border-bottom:1px solid #efe8d8;cursor:pointer;flex-wrap:wrap}
   .wrow:active{background:#f7f2e6}
   .tile{width:38px;height:38px;flex:0 0 38px;display:flex;align-items:center;justify-content:center;
     font-size:22px;line-height:1;background:#f1e9d8;border-radius:10px;border:1px solid #e8dfcb}
@@ -124,6 +124,13 @@
   .wrow .wd .ar{font-weight:400;font-size:12px;color:var(--faint);margin-right:3px}
   .wrow .z{color:var(--muted);font-size:12.5px;margin-left:auto;text-align:right;max-width:42%}
   .wrow .done{color:var(--ok);font-size:13px;flex:0 0 auto}
+  .pos{font-size:9.5px;line-height:1.5;padding:1px 5px;border-radius:4px;flex:0 0 auto;
+    font-weight:700;letter-spacing:.01em;background:#eee8da;color:#7a7160;white-space:nowrap}
+  .pos.s{background:#e2ecf6;color:#2b5f8a}
+  .pos.v{background:#e3f1e7;color:#2c6b46}
+  .pos.a{background:#f8eed7;color:#8a6720}
+  .pos.x{background:#f1e6ef;color:#7a4f70}
+  .flash .pos{font-size:11px;padding:2px 8px;margin-bottom:8px;display:inline-block}
   .bigimg{font-size:58px;line-height:1.1;margin-bottom:2px}
   .mini{display:flex;gap:2px;font-size:15px;margin-top:4px;opacity:.9}
   @media(max-width:420px){
@@ -272,9 +279,18 @@
     return out;
   }
 
+  function posCls(p){
+    if(p === "Subst.") return "s";
+    if(p === "Verb") return "v";
+    if(p === "Adj.") return "a";
+    if(p === "Ausdr.") return "x";
+    return "o";
+  }
+
   function wordRow(w){
     var r = el("div", "wrow");
     r.appendChild(el("div", "tile", w.img || "\ud83d\udccc"));
+    if(w.pos) r.appendChild(el("span", "pos " + posCls(w.pos), w.pos));
     var wd = el("div", "wd " + artClass(w.art));
     if(w.art) wd.appendChild(el("span", "ar", w.art));
     wd.appendChild(document.createTextNode(w.de));
@@ -339,6 +355,7 @@
     var card = el("div","flash");
     if(w.img) card.appendChild(el("div","bigimg", w.img));
     var de = el("div","de " + artClass(w.art));
+    if(w.pos) de.appendChild(el("span","pos " + posCls(w.pos), w.pos));
     if(w.art) de.appendChild(el("div","art", w.art));
     de.appendChild(el("div","word", w.de));
     if(w.pl) de.appendChild(el("div","pl", "Plural: " + w.pl));
