@@ -108,6 +108,24 @@
   .stat div{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
   .stat b{display:block;font-size:19px}
   .stat span{font-size:11.5px;color:var(--muted)}
+
+  /* word sections with pictures */
+  .wsec{margin-top:20px}
+  .ghead{display:flex;align-items:flex-start;gap:9px;padding:0 2px 6px;border-bottom:2px solid #e0d7c4}
+  .ghead .lab{font-weight:700;font-size:15px;background:var(--deep);color:#fff;border-radius:7px;padding:2px 8px;flex:0 0 auto}
+  .ghead .sc{font-size:12px;color:var(--muted);line-height:1.4;padding-top:2px}
+  .ghead .study{margin-left:auto;flex:0 0 auto;font-size:12px;border:1px solid var(--line);background:var(--card);border-radius:8px;padding:4px 9px;white-space:nowrap}
+  .wrow{display:flex;align-items:center;gap:11px;padding:9px 4px;border-bottom:1px solid #efe8d8;cursor:pointer}
+  .wrow:active{background:#f7f2e6}
+  .tile{width:38px;height:38px;flex:0 0 38px;display:flex;align-items:center;justify-content:center;
+    font-size:22px;line-height:1;background:#f1e9d8;border-radius:10px;border:1px solid #e8dfcb}
+  .wrow .wd{font-weight:600;font-size:15px;line-height:1.25}
+  .wrow .wd.der{color:var(--der)} .wrow .wd.die{color:var(--die)} .wrow .wd.das{color:var(--das)}
+  .wrow .wd .ar{font-weight:400;font-size:12px;color:var(--faint);margin-right:3px}
+  .wrow .z{color:var(--muted);font-size:12.5px;margin-left:auto;text-align:right;max-width:42%}
+  .wrow .done{color:var(--ok);font-size:13px;flex:0 0 auto}
+  .bigimg{font-size:58px;line-height:1.1;margin-bottom:2px}
+  .mini{display:flex;gap:2px;font-size:15px;margin-top:4px;opacity:.9}
   @media(max-width:420px){
     .word{font-size:27px}
     .grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
@@ -234,25 +252,38 @@
     tb.appendChild(b1); tb.appendChild(b2); tb.appendChild(b3); tb.appendChild(b4);
     app.appendChild(tb);
 
-    var grid = el("div", "grid");
     u.groups.forEach(function(g, i){
-      var c = el("button", "gcard");
-      var lab = el("div", "lab", g.label);
-      c.appendChild(lab);
-      var kn = g.words.filter(function(w){ var r=srs[w.id]; return r && r.b>=4; }).length;
-      if(kn === g.words.length && g.words.length) c.appendChild(el("div","done","✓"));
-      c.appendChild(el("div", "sc", g.scene || ""));
-      c.appendChild(el("div", "cnt", g.words.length + " 词" + (kn ? " · 掌握 " + kn : "")));
-      c.onclick = function(){ startStudy(g.words.slice(), "Lektion " + u.n + " · " + g.label, i); };
-      grid.appendChild(c);
+      var sec = el("div", "wsec");
+      var head = el("div", "ghead");
+      head.appendChild(el("div", "lab", g.label));
+      if(g.scene) head.appendChild(el("div", "sc", g.scene));
+      var sb = el("button", "study", "学这组");
+      sb.onclick = function(){ startStudy(g.words.slice(), "Lektion " + u.n + " · " + g.label, i); };
+      head.appendChild(sb);
+      sec.appendChild(head);
+      g.words.forEach(function(w){ sec.appendChild(wordRow(w)); });
+      app.appendChild(sec);
     });
-    app.appendChild(grid);
   }
 
   function allDue(u){
     var out = [];
     u.groups.forEach(function(g){ g.words.forEach(function(w){ if(due(w.id)) out.push(w); }); });
     return out;
+  }
+
+  function wordRow(w){
+    var r = el("div", "wrow");
+    r.appendChild(el("div", "tile", w.img || "\ud83d\udccc"));
+    var wd = el("div", "wd " + artClass(w.art));
+    if(w.art) wd.appendChild(el("span", "ar", w.art));
+    wd.appendChild(document.createTextNode(w.de));
+    r.appendChild(wd);
+    var rec0 = srs[w.id];
+    if(rec0 && rec0.b >= 4) r.appendChild(el("div", "done", "\u2713"));
+    r.appendChild(el("div", "z", w.zh || ""));
+    r.onclick = function(){ speak((w.art ? w.art + " " : "") + w.de, 0.85); };
+    return r;
   }
 
   function viewList(){
@@ -278,15 +309,7 @@
         if(!ws.length) return;
         var gh = el("div","theme"); gh.style.margin="14px 0 4px"; gh.textContent = "Aufgabe " + g.label + (g.scene ? " — " + g.scene : "");
         box.appendChild(gh);
-        ws.forEach(function(w){
-          var r = el("div","row");
-          var a = el("div","w " + artClass(w.art), w.de);
-          if(w.art) a.textContent = w.art + " " + w.de + (w.pl ? " (" + w.pl + ")" : "");
-          var z = el("div","z", w.zh || "");
-          r.appendChild(a); r.appendChild(z);
-          r.onclick = function(){ speak(w.art ? w.art + " " + w.de : w.de, 0.85); };
-          box.appendChild(r);
-        });
+        ws.forEach(function(w){ box.appendChild(wordRow(w)); });
       });
       if(!box.children.length) box.appendChild(el("div","empty","没有匹配的词"));
     }
@@ -314,6 +337,7 @@
     var w = state.queue[state.qi];
     var stage = el("div","stage");
     var card = el("div","flash");
+    if(w.img) card.appendChild(el("div","bigimg", w.img));
     var de = el("div","de " + artClass(w.art));
     if(w.art) de.appendChild(el("div","art", w.art));
     de.appendChild(el("div","word", w.de));
