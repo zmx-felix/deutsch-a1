@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f1e6">
+<title>Netzwerk neu A1 · 课后词汇（中文遮蔽版）</title>
+<style>
+  :root{
+    --paper:#f6f1e6; --card:#fffdf8; --ink:#1d2420; --muted:#66716a; --faint:#9aa39d;
+    --line:#e2dac9; --der:#2b6cb0; --die:#b23a3a; --das:#2f855a;
+    --gold:#e8a90c; --deep:#123f31; --ok:#2f855a; --no:#b23a3a;
+    --shadow:0 1px 2px rgba(29,36,32,.05), 0 12px 28px -20px rgba(29,36,32,.55);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+    font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC",serif}
+  a{color:inherit}
+  button{font:inherit;color:inherit;cursor:pointer}
+
+  header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,#123f31,#0f3529);color:#fff;
+    padding:10px 14px 0;box-shadow:0 6px 18px -14px rgba(0,0,0,.8)}
+  .hrow{display:flex;align-items:center;gap:10px}
+  .brand{font-weight:600;font-size:14px;letter-spacing:.02em;text-decoration:none;color:#fff}
+  .brand i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-right:7px;vertical-align:1px}
+  .back{margin-left:auto;font-size:12.5px;color:#c9dcd1;text-decoration:none;padding:4px 8px;border:1px solid rgba(255,255,255,.18);border-radius:7px}
+  .units{display:flex;gap:6px;overflow-x:auto;padding:9px 0 10px;scrollbar-width:none}
+  .units::-webkit-scrollbar{display:none}
+  .units button{flex:0 0 auto;border:1px solid rgba(255,255,255,.16);background:transparent;color:#cfe0d6;
+    border-radius:8px;padding:5px 10px;font-size:12.5px;white-space:nowrap}
+  .units button.on{background:rgba(232,169,12,.16);border-color:rgba(232,169,12,.5);color:#f3c96a}
+
+  main{max-width:860px;margin:0 auto;padding:16px 14px 90px}
+  h2{margin:0 0 2px;font-size:21px;line-height:1.3}
+  .theme{color:var(--muted);font-size:13px;margin:0 0 14px}
+  .bar{height:6px;background:#e7dfcd;border-radius:99px;overflow:hidden}
+  .bar>i{display:block;height:100%;background:linear-gradient(90deg,#2f855a,#7fb069);width:0;transition:width .35s}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:9px;margin-top:14px}
+  .gcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:11px 12px;text-align:left;
+    box-shadow:var(--shadow);display:flex;flex-direction:column;gap:3px;position:relative;overflow:hidden}
+  .gcard:active{transform:scale(.985)}
+  .gcard .lab{font-weight:700;font-size:16px;letter-spacing:.01em}
+  .gcard .sc{font-size:11.5px;color:var(--muted);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:15px}
+  .gcard .cnt{font-size:11px;color:var(--faint);margin-top:auto}
+  .gcard .done{position:absolute;right:10px;top:10px;font-size:10.5px;color:var(--ok);font-weight:600}
+
+  .toolbar{display:flex;gap:8px;margin:16px 0 6px;flex-wrap:wrap}
+  .btn{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 13px;font-size:13.5px;box-shadow:var(--shadow)}
+  .btn.primary{background:var(--deep);color:#fff;border-color:var(--deep)}
+  .btn.gold{background:var(--gold);border-color:var(--gold);color:#3a2a00;font-weight:600}
+  .btn.sm{padding:6px 10px;font-size:12.5px}
+  .btn[disabled]{opacity:.45}
+
+  /* study */
+  .study{position:fixed;inset:0;z-index:40;background:var(--paper);display:flex;flex-direction:column}
+  .study .top{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);background:rgba(246,241,230,.95);backdrop-filter:blur(6px)}
+  .study .top .t{font-size:13px;color:var(--muted)}
+  .study .top .t b{color:var(--ink);font-size:14px}
+  .x{margin-left:auto;border:0;background:transparent;font-size:22px;line-height:1;color:var(--muted);padding:2px 6px}
+  .stage{flex:1;display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto}
+  .flash{width:100%;max-width:520px;background:var(--card);border:1px solid var(--line);border-radius:20px;
+    padding:28px 24px;box-shadow:var(--shadow);text-align:center;min-height:300px;display:flex;flex-direction:column;justify-content:center;gap:8px}
+  .art{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+  .word{font-size:32px;font-weight:650;line-height:1.2;word-break:break-word}
+  .de.der .word,.de.der .art{color:var(--der)} .de.die .word,.de.die .art{color:var(--die)}
+  .de.das .word,.de.das .art{color:var(--das)}
+  .pl{font-size:13px;color:var(--muted)}
+  .zh{font-size:19px;margin-top:6px}
+  .ex{margin-top:12px;font-size:13.5px;color:#3d453f;border-top:1px dashed var(--line);padding-top:11px;text-align:left}
+  .ex .zhx{color:var(--muted);font-size:12.5px;margin-top:3px}
+  .ctx{font-size:12px;color:var(--faint);margin-top:8px;text-align:left}
+  .hint{font-size:12.5px;color:var(--faint);margin-top:14px}
+  .speak{border:1px solid var(--line);background:#fbf7ec;border-radius:99px;width:38px;height:38px;font-size:16px;margin:10px auto 0;display:flex;align-items:center;justify-content:center}
+  .controls{display:flex;gap:9px;padding:12px 14px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--card)}
+  .controls button{flex:1;border-radius:12px;border:1px solid var(--line);background:#fff;padding:12px 8px;font-size:14px}
+  .controls .again{color:#8a2b2b;border-color:#e9c9c9;background:#fdf3f3}
+  .controls .ok{color:#1f6b46;border-color:#c6e2d2;background:#f2faf5}
+  .dots{display:flex;gap:4px;justify-content:center;padding:0 14px 8px;flex-wrap:wrap}
+  .dots i{width:6px;height:6px;border-radius:50%;background:#ddd3bf}
+  .dots i.p{background:var(--deep)} .dots i.c{background:var(--gold)}
+
+  /* quiz */
+  .qwrap{max-width:560px;margin:0 auto}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
+  .q .stem{font-size:16px;margin-bottom:14px}
+  .q .stem b{font-size:22px}
+  .opts{display:grid;gap:8px}
+  .opt{text-align:left;border:1px solid var(--line);background:#fff;border-radius:11px;padding:11px 13px;font-size:14.5px}
+  .opt.right{background:#eef8f1;border-color:#a9d8bd}
+  .opt.wrong{background:#fdf0f0;border-color:#e6b6b6}
+  .feedback{margin-top:12px;font-size:13.5px;color:var(--muted);min-height:20px}
+  .score{font-size:38px;font-weight:700;text-align:center;margin:8px 0}
+
+  /* list */
+  .search{width:100%;border:1px solid var(--line);background:var(--card);border-radius:11px;padding:10px 13px;font-size:14px;margin:12px 0}
+  .row{display:flex;gap:10px;align-items:baseline;padding:10px 4px;border-bottom:1px solid #eee7d7}
+  .row .w{font-weight:600;min-width:0;word-break:break-word}
+  .row .w.der{color:var(--der)} .row .w.die{color:var(--die)} .row .w.das{color:var(--das)}
+  .row .z{color:var(--muted);font-size:13px;margin-left:auto;text-align:right;max-width:46%}
+  .row .s{color:var(--faint);font-size:11.5px}
+
+  .empty{color:var(--muted);text-align:center;padding:40px 10px;font-size:14px}
+  .stat{display:flex;gap:10px;margin:12px 0 4px}
+  .stat div{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+  .stat b{display:block;font-size:19px}
+  .stat span{font-size:11.5px;color:var(--muted)}
+
+  /* word sections with pictures */
+  .wsec{margin-top:20px}
+  .ghead{display:flex;align-items:flex-start;gap:9px;padding:0 2px 6px;border-bottom:2px solid #e0d7c4}
+  .ghead .lab{font-weight:700;font-size:15px;background:var(--deep);color:#fff;border-radius:7px;padding:2px 8px;flex:0 0 auto}
+  .ghead .sc{font-size:12px;color:var(--muted);line-height:1.4;padding-top:2px}
+  .ghead .gstudy{margin-left:auto;flex:0 0 auto;font-size:12px;border:1px solid var(--line);background:var(--card);border-radius:8px;padding:4px 9px;white-space:nowrap}
+  .wrow{display:flex;align-items:center;gap:9px;padding:9px 4px;border-bottom:1px solid #efe8d8;cursor:pointer;flex-wrap:wrap}
+  .wrow:active{background:#f7f2e6}
+  .tile{width:38px;height:38px;flex:0 0 38px;display:flex;align-items:center;justify-content:center;
+    font-size:22px;line-height:1;background:#f1e9d8;border-radius:10px;border:1px solid #e8dfcb}
+  .wrow .wd{font-weight:600;font-size:15px;line-height:1.25}
+  .wrow .wd.der{color:var(--der)} .wrow .wd.die{color:var(--die)} .wrow .wd.das{color:var(--das)}
+  .wrow .wd .ar{font-weight:400;font-size:12px;color:var(--faint);margin-right:3px}
+  .wrow .z{color:var(--muted);font-size:12.5px;margin-left:auto;text-align:right;max-width:42%}
+  .zmask{filter:blur(6px);transition:filter .12s ease;cursor:pointer;user-select:none;-webkit-user-select:none}
+  .zmask:hover{filter:blur(3.5px)}
+  .zmask.off{filter:none;cursor:default}
+  .wrow .done{color:var(--ok);font-size:13px;flex:0 0 auto}
+  .pos{font-size:9.5px;line-height:1.5;padding:1px 5px;border-radius:4px;flex:0 0 auto;
+    font-weight:700;letter-spacing:.01em;background:#eee8da;color:#7a7160;white-space:nowrap}
+  .pos.s{background:#e2ecf6;color:#2b5f8a}
+  .pos.v{background:#e3f1e7;color:#2c6b46}
+  .pos.a{background:#f8eed7;color:#8a6720}
+  .pos.x{background:#f1e6ef;color:#7a4f70}
+  .flash .pos{font-size:11px;padding:2px 8px;margin-bottom:8px;display:inline-block}
+  .bigimg{font-size:58px;line-height:1.1;margin-bottom:2px}
+  .mini{display:flex;gap:2px;font-size:15px;margin-top:4px;opacity:.9}
+  @media(max-width:420px){
+    .word{font-size:27px}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="hrow">
+    <a class="brand" href="index.html" target="_self"><i></i>Netzwerk neu A1 · 课后词汇</a>
+    <a class="back" href="index.html" target="_top">返回</a>
+  </div>
+  <div class="units" id="units"></div>
+</header>
+<main id="app"></main>
+
+<script src="vokabeln-blind-data.js"></script>
+<script>
+(function(){
+  "use strict";
+  var D = window.NW_DATA || {units:[]};
+  var SRS_KEY = "nwa1_srs_v1";
+  var srs = {};
+  try { srs = JSON.parse(localStorage.getItem(SRS_KEY) || "{}") || {}; } catch(e){ srs = {}; }
+  function save(){ try { localStorage.setItem(SRS_KEY, JSON.stringify(srs)); } catch(e){} }
+
+  var BOX_DAYS = [0, 1, 2, 4, 8, 16, 32];
+  function today(){ return new Date().toISOString().slice(0,10); }
+  function rec(id){
+    if(!srs[id]) srs[id] = {b:0, d:today(), r:0, w:0};
+    return srs[id];
+  }
+  function due(id){
+    var r = srs[id];
+    if(!r) return true;
+    return r.d <= today();
+  }
+  function mark(id, ok){
+    var r = rec(id);
+    if(ok){ r.b = Math.min(6, r.b + 1); r.r++; }
+    else { r.b = Math.max(0, r.b - 2); r.w++; }
+    var add = BOX_DAYS[r.b];
+    var dt = new Date(); dt.setDate(dt.getDate() + add);
+    r.d = dt.toISOString().slice(0,10);
+    save();
+  }
+
+  var app = document.getElementById("app");
+  var state = {unit: 1, view: "unit", groupIdx: -1, queue: [], qi: 0, flipped: false,
+               quiz: null, dict: null, search: ""};
+
+  /* ---------- helpers ---------- */
+  function unitByN(n){ for(var i=0;i<D.units.length;i++) if(D.units[i].n===n) return D.units[i]; return D.units[0]; }
+  function artClass(a){ a=(a||"").toLowerCase(); if(a.indexOf("der")===0) return "der"; if(a.indexOf("die")===0) return "die"; if(a.indexOf("das")===0) return "das"; return ""; }
+  function el(tag, cls, txt){ var x=document.createElement(tag); if(cls) x.className=cls; if(txt!=null) x.textContent=txt; return x; }
+  function esc(s){ return (s||"").replace(/[&<>"]/g, function(c){ return ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]; }); }
+
+  var voices = [];
+  function pickVoice(){
+    if(!("speechSynthesis" in window)) return null;
+    var vs = speechSynthesis.getVoices() || [];
+    voices = vs;
+    for(var i=0;i<vs.length;i++){ if(/^de(-|_)/i.test(vs[i].lang)) return vs[i]; }
+    return null;
+  }
+  if("speechSynthesis" in window){ speechSynthesis.onvoiceschanged = pickVoice; pickVoice(); }
+  function speak(text, rate){
+    if(!("speechSynthesis" in window)) return;
+    try{
+      speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = "de-DE"; u.rate = rate || 0.9;
+      var v = pickVoice(); if(v) u.voice = v;
+      speechSynthesis.speak(u);
+    }catch(e){}
+  }
+
+  /* ---------- top units ---------- */
+  function renderUnits(){
+    var box = document.getElementById("units");
+    box.innerHTML = "";
+    D.units.forEach(function(u){
+      var b = el("button", u.n===state.unit ? "on" : "", u.n + " · " + u.title);
+      b.onclick = function(){ state.unit = u.n; state.view="unit"; state.search=""; render(); };
+      box.appendChild(b);
+    });
+  }
+
+  function unitStats(u){
+    var all = 0, known = 0, dueN = 0;
+    u.groups.forEach(function(g){ g.words.forEach(function(w){
+      all++; var r = srs[w.id]; if(r && r.b>=4) known++; if(due(w.id)) dueN++;
+    });});
+    return {all:all, known:known, due:dueN};
+  }
+
+  /* ---------- views ---------- */
+  function viewUnit(){
+    var u = unitByN(state.unit);
+    var st = unitStats(u);
+    app.innerHTML = "";
+    var h = el("h2", "serif", u.n + ". " + u.title);
+    app.appendChild(h);
+    app.appendChild(el("p", "theme", u.theme));
+    var bar = el("div", "bar"); var fill = el("i");
+    fill.style.width = (st.all ? Math.round(100*st.known/st.all) : 0) + "%";
+    bar.appendChild(fill); app.appendChild(bar);
+
+    var stat = el("div", "stat");
+    [["总词数", st.all], ["已掌握", st.known], ["待复习", st.due]].forEach(function(p){
+      var d = el("div"); var b = el("b", "", String(p[1])); d.appendChild(b); d.appendChild(el("span","",p[0])); stat.appendChild(d);
+    });
+    app.appendChild(stat);
+
+    var tb = el("div", "toolbar");
+    var b1 = el("button", "btn primary", "▶ 全部复习 (" + Math.min(st.due, 999) + ")");
+    b1.onclick = function(){ startStudy(allDue(u), "复习 · " + u.title); };
+    var b2 = el("button", "btn", "选择测验");
+    b2.onclick = function(){ startQuiz(u); };
+    var b3 = el("button", "btn", "听写");
+    b3.onclick = function(){ startDict(u); };
+    var b4 = el("button", "btn", "词汇表");
+    b4.onclick = function(){ state.view="list"; render(); };
+    var b5 = el("button", "btn", MASK_ON ? "中文：遮蔽中" : "中文：全部显示");
+    b5.onclick = function(){
+      MASK_ON = !MASK_ON;
+      b5.textContent = MASK_ON ? "中文：遮蔽中" : "中文：全部显示";
+      applyMask();
+    };
+    tb.appendChild(b1); tb.appendChild(b2); tb.appendChild(b3); tb.appendChild(b4); tb.appendChild(b5);
+    app.appendChild(tb);
+
+    u.groups.forEach(function(g, i){
+      var sec = el("div", "wsec");
+      var head = el("div", "ghead");
+      head.appendChild(el("div", "lab", g.label));
+      if(g.scene) head.appendChild(el("div", "sc", g.scene));
+      var sb = el("button", "gstudy", "学这组");
+      sb.onclick = function(){ startStudy(g.words.slice(), "Lektion " + u.n + " · " + g.label, i); };
+      head.appendChild(sb);
+      sec.appendChild(head);
+      g.words.forEach(function(w){ sec.appendChild(wordRow(w)); });
+      app.appendChild(sec);
+    });
+  }
+
+  function allDue(u){
+    var out = [];
+    u.groups.forEach(function(g){ g.words.forEach(function(w){ if(due(w.id)) out.push(w); }); });
+    return out;
+  }
+
+  var MASK_ON = true;
+  function applyMask(){
+    var all = document.querySelectorAll(".zmask");
+    for(var i=0;i<all.length;i++) all[i].classList.toggle("off", !MASK_ON);
+  }
+
+  function posCls(p){
+    if(p === "Subst.") return "s";
+    if(p === "Verb") return "v";
+    if(p === "Adj.") return "a";
+    if(p === "Ausdr.") return "x";
+    return "o";
+  }
+
+  function wordRow(w){
+    var r = el("div", "wrow");
+    r.appendChild(el("div", "tile", w.img || "\ud83d\udccc"));
+    if(w.pos) r.appendChild(el("span", "pos " + posCls(w.pos), w.pos));
+    var wd = el("div", "wd " + artClass(w.art));
+    if(w.art) wd.appendChild(el("span", "ar", w.art));
+    wd.appendChild(document.createTextNode(w.de));
+    r.appendChild(wd);
+    var rec0 = srs[w.id];
+    if(rec0 && rec0.b >= 4) r.appendChild(el("div", "done", "\u2713"));
+    var zz = el("div", "z zmask", w.zh || "");
+    zz.onclick = function(e){ e.stopPropagation(); zz.classList.toggle("off"); };
+    r.appendChild(zz);
+    r.onclick = function(){ speak((w.art ? w.art + " " : "") + w.de, 0.85); };
+    return r;
+  }
+
+  function viewList(){
+    var u = unitByN(state.unit);
+    app.innerHTML = "";
+    app.appendChild(el("h2","serif", u.n + ". " + u.title + " · 词汇表"));
+    app.appendChild(el("p","theme", u.theme));
+    var inp = el("input","search"); inp.type="search"; inp.placeholder="搜索德语或中文…"; inp.value = state.search;
+    inp.oninput = function(){ state.search = inp.value; draw(); };
+    app.appendChild(inp);
+    var box = el("div"); app.appendChild(box);
+    var back = el("button","btn sm","← 返回单元"); back.style.marginBottom="10px";
+    back.onclick = function(){ state.view="unit"; render(); };
+    app.insertBefore(back, inp);
+    function draw(){
+      box.innerHTML = "";
+      var q = state.search.trim().toLowerCase();
+      u.groups.forEach(function(g){
+        var ws = g.words.filter(function(w){
+          if(!q) return true;
+          return (w.de||"").toLowerCase().indexOf(q)>=0 || (w.zh||"").indexOf(q)>=0;
+        });
+        if(!ws.length) return;
+        var gh = el("div","theme"); gh.style.margin="14px 0 4px"; gh.textContent = "Aufgabe " + g.label + (g.scene ? " — " + g.scene : "");
+        box.appendChild(gh);
+        ws.forEach(function(w){ box.appendChild(wordRow(w)); });
+      });
+      if(!box.children.length) box.appendChild(el("div","empty","没有匹配的词"));
+    }
+    draw();
+  }
+
+  /* ---------- study ---------- */
+  function startStudy(words, title, gi){
+    words = words.filter(Boolean);
+    if(!words.length){ alert("这里没有待复习的词 👍"); return; }
+    state.queue = words; state.qi = 0; state.flipped = false; state.groupIdx = (gi==null?-1:gi);
+    state.studyTitle = title || "学习";
+    state.view = "study";
+    renderStudy();
+  }
+
+  function renderStudy(){
+    var old = document.querySelector(".study"); if(old) old.remove();
+    var wrap = el("div","study");
+    var top = el("div","top");
+    var t = el("div","t"); t.innerHTML = "<b>" + esc(state.studyTitle) + "</b> · " + (state.qi+1) + "/" + state.queue.length;
+    var x = el("button","x","×"); x.onclick = function(){ wrap.remove(); state.view="unit"; render(); };
+    top.appendChild(t); top.appendChild(x); wrap.appendChild(top);
+
+    var w = state.queue[state.qi];
+    var stage = el("div","stage");
+    var card = el("div","flash");
+    if(w.img) card.appendChild(el("div","bigimg", w.img));
+    var de = el("div","de " + artClass(w.art));
+    if(w.pos) de.appendChild(el("span","pos " + posCls(w.pos), w.pos));
+    if(w.art) de.appendChild(el("div","art", w.art));
+    de.appendChild(el("div","word", w.de));
+    if(w.pl) de.appendChild(el("div","pl", "Plural: " + w.pl));
+    card.appendChild(de);
+
+    var sp = el("button","speak","🔊");
+    sp.onclick = function(e){ e.stopPropagation(); speak(w.art ? w.art+" "+w.de : w.de, .85); };
+    card.appendChild(sp);
+
+    if(state.flipped){
+      card.appendChild(el("div","zh", w.zh || "（暂无中文）"));
+      if(w.forms) card.appendChild(el("div","pl","变位/形式: " + w.forms));
+      if(w.ex){
+        var ex = el("div","ex");
+        ex.appendChild(el("div","", w.ex));
+        if(w.exZh) ex.appendChild(el("div","zhx", w.exZh));
+        card.appendChild(ex);
+      }
+      if(w.ctx){
+        var cx = el("div","ctx","课本语境: " + w.ctx);
+        card.appendChild(cx);
+      }
+    } else {
+      card.appendChild(el("div","hint","点击卡片查看中文 / 例句"));
+    }
+    card.onclick = function(){ state.flipped = !state.flipped; renderStudy(); };
+    stage.appendChild(card); wrap.appendChild(stage);
+
+    var dots = el("div","dots");
+    state.queue.forEach(function(_,i){
+      var d = el("i"); if(i<state.qi) d.className="p"; else if(i===state.qi) d.className="c";
+      dots.appendChild(d);
+    });
+    wrap.appendChild(dots);
+
+    var ctl = el("div","controls");
+    var again = el("button","again","不认识");
+    var okb = el("button","ok","认识了");
+    again.onclick = function(){ mark(w.id,false); next(); };
+    okb.onclick = function(){ mark(w.id,true); next(); };
+    ctl.appendChild(again); ctl.appendChild(okb);
+    wrap.appendChild(ctl);
+
+    document.body.appendChild(wrap);
+  }
+
+  function next(){
+    if(state.flipped === false && state.qi < state.queue.length){
+      // if user answered without flipping, still advance
+    }
+    state.qi++;
+    state.flipped = false;
+    if(state.qi >= state.queue.length){ finishStudy(); return; }
+    renderStudy();
+  }
+
+  function finishStudy(){
+    var old = document.querySelector(".study"); if(old) old.remove();
+    var wrap = el("div","study");
+    var top = el("div","top"); top.appendChild(el("div","t","完成"));
+    var x = el("button","x","×"); x.onclick = function(){ wrap.remove(); render(); };
+    top.appendChild(x); wrap.appendChild(top);
+    var stage = el("div","stage");
+    var card = el("div","flash");
+    card.appendChild(el("div","word","🎉"));
+    card.appendChild(el("div","zh","本轮 " + state.queue.length + " 个词学完了"));
+    stage.appendChild(card); wrap.appendChild(stage);
+    var ctl = el("div","controls");
+    var b1 = el("button","ok","再来一轮"); b1.onclick = function(){ startStudy(state.queue.slice(), state.studyTitle); };
+    var b2 = el("button","","回到单元"); b2.onclick = function(){ wrap.remove(); state.view="unit"; render(); };
+    ctl.appendChild(b1); ctl.appendChild(b2); wrap.appendChild(ctl);
+    document.body.appendChild(wrap);
+  }
+
+  /* ---------- quiz ---------- */
+  function pickN(arr, n, exclude){
+    var pool = arr.filter(function(x){ return x !== exclude; });
+    for(var i=pool.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=pool[i]; pool[i]=pool[j]; pool[j]=t; }
+    return pool.slice(0,n);
+  }
+
+  function startQuiz(u){
+    var all = [];
+    u.groups.forEach(function(g){ g.words.forEach(function(w){ if(w.zh) all.push(w); }); });
+    if(all.length < 4){ alert("这个词表太小，无法出题"); return; }
+    var qs = pickN(all, Math.min(12, all.length), null).map(function(w){
+      var opts = [w.zh].concat(pickN(all,3,w).map(function(x){ return x.zh; }));
+      for(var i=opts.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=opts[i]; opts[i]=opts[j]; opts[j]=t; }
+      return {w:w, opts:opts, ans:w.zh, picked:null};
+    });
+    state.quiz = {qs:qs, i:0, right:0};
+    state.view = "quiz";
+    renderQuiz();
+  }
+
+  function renderQuiz(){
+    var q0 = state.quiz, q = q0.qs[q0.i];
+    app.innerHTML = "";
+    var wrap = el("div","qwrap");
+    var hd = el("div","toolbar");
+    var b = el("button","btn sm","← 退出"); b.onclick = function(){ state.view="unit"; render(); };
+    hd.appendChild(b);
+    hd.appendChild(el("div","t","第 " + (q0.i+1) + " / " + q0.qs.length + " 题 · 答对 " + q0.right));
+    wrap.appendChild(hd);
+
+    var card = el("div","q");
+    var stem = el("div","stem");
+    stem.innerHTML = "«" + esc(q.w.de) + "»" + (q.w.art ? " <span style='font-size:12px;color:#9aa39d'>(" + esc(q.w.art) + ")</span>" : "") + " 的意思是？";
+    card.appendChild(stem);
+    var opts = el("div","opts");
+    q.opts.forEach(function(o){
+      var bt = el("button","opt", o);
+      if(q.picked){
+        if(o === q.ans) bt.className = "opt right";
+        else if(o === q.picked) bt.className = "opt wrong";
+        bt.disabled = true;
+      }
+      bt.onclick = function(){
+        if(q.picked) return;
+        q.picked = o;
+        if(o === q.ans) q0.right++;
+        renderQuiz();
+      };
+      opts.appendChild(bt);
+    });
+    card.appendChild(opts);
+
+    var fb = el("div","feedback");
+    if(q.picked){
+      fb.textContent = (q.picked === q.ans ? "✓ 正确" : "✗ 正确答案：" + q.ans) + (q.w.ex ? "｜" + q.w.ex : "");
+      var nb = el("button","btn primary","下一题 →");
+      nb.style.marginTop = "12px";
+      nb.onclick = function(){
+        mark(q.w.id, q.picked === q.ans);
+        if(q0.i+1 >= q0.qs.length){ showQuizResult(); } else { q0.i++; renderQuiz(); }
+      };
+      card.appendChild(fb);
+      card.appendChild(nb);
+    }
+    wrap.appendChild(card);
+    app.appendChild(wrap);
+  }
+
+  function showQuizResult(){
+    var q0 = state.quiz;
+    app.innerHTML = "";
+    var wrap = el("div","qwrap");
+    var card = el("div","q");
+    card.appendChild(el("div","score", q0.right + " / " + q0.qs.length));
+    card.appendChild(el("div","feedback","正确率 " + Math.round(100*q0.right/q0.qs.length) + "%"));
+    var b1 = el("button","btn primary","再测一次"); b1.style.marginTop="14px";
+    b1.onclick = function(){ startQuiz(unitByN(state.unit)); };
+    var b2 = el("button","btn","回到单元"); b2.style.marginTop="10px";
+    b2.onclick = function(){ state.view="unit"; render(); };
+    card.appendChild(b1); card.appendChild(b2);
+    wrap.appendChild(card); app.appendChild(wrap);
+  }
+
+  /* ---------- dictation ---------- */
+  function startDict(u){
+    var all = [];
+    u.groups.forEach(function(g){ g.words.forEach(function(w){ all.push(w); }); });
+    state.dict = {qs: pickN(all, Math.min(10, all.length), null), i:0, right:0, revealed:false, input:""};
+    state.view = "dict";
+    renderDict();
+  }
+
+  function normDE(s){
+    return (s||"").toLowerCase().trim()
+      .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss")
+      .replace(/[.,!?;:"'’]/g,"").replace(/\s+/g," ");
+  }
+
+  function renderDict(){
+    var d = state.dict, w = d.qs[d.i];
+    app.innerHTML = "";
+    var wrap = el("div","qwrap");
+    var hd = el("div","toolbar");
+    var b = el("button","btn sm","← 退出"); b.onclick = function(){ state.view="unit"; render(); };
+    hd.appendChild(b);
+    hd.appendChild(el("div","t","听写 " + (d.i+1) + " / " + d.qs.length + " · 对 " + d.right));
+    wrap.appendChild(hd);
+
+    var card = el("div","q");
+    var sp = el("button","btn gold","🔊 再听一遍");
+    sp.onclick = function(){ speak(w.de, .8); };
+    card.appendChild(sp);
+    var inp = el("input","search"); inp.style.marginTop="14px"; inp.placeholder="听到什么就写什么（含冠词可）";
+    inp.value = d.input; inp.autocapitalize="off"; inp.autocorrect="off"; inp.spellcheck=false;
+    inp.oninput = function(){ d.input = inp.value; };
+    inp.onkeydown = function(e){ if(e.key === "Enter"){ check(); } };
+    card.appendChild(inp);
+
+    var fb = el("div","feedback");
+    if(d.revealed){
+      fb.innerHTML = (normDE(d.input) === normDE(w.de) || normDE(d.input) === normDE((w.art?w.art+" ":"")+w.de))
+        ? "✓ 正确！" : "✗ 答案：" + (w.art ? w.art + " " : "") + w.de;
+      if(w.zh) fb.textContent += " ｜ " + w.zh;
+    }
+    card.appendChild(fb);
+
+    var row = el("div","toolbar");
+    if(!d.revealed){
+      var c = el("button","btn primary","对答案");
+      c.onclick = function(){ check(); };
+      row.appendChild(c);
+    } else {
+      var n = el("button","btn primary","下一个 →");
+      n.onclick = function(){
+        mark(w.id, normDE(d.input) === normDE(w.de) || normDE(d.input) === normDE((w.art?w.art+" ":"")+w.de));
+        if(d.i+1 >= d.qs.length){ d.done = true; showDictResult(); }
+        else { d.i++; d.revealed=false; d.input=""; renderDict(); speak(d.qs[d.i].de,.8); }
+      };
+      row.appendChild(n);
+    }
+    card.appendChild(row);
+    wrap.appendChild(card);
+    app.appendChild(wrap);
+    setTimeout(function(){ try{ inp.focus(); }catch(e){} if(!d.revealed) speak(w.de,.8); }, 120);
+
+    function check(){
+      var ok = normDE(d.input) === normDE(w.de) || normDE(d.input) === normDE((w.art?w.art+" ":"")+w.de);
+      if(ok) d.right++;
+      d.revealed = true;
+      renderDict();
+    }
+  }
+
+  function showDictResult(){
+    var d = state.dict;
+    app.innerHTML = "";
+    var wrap = el("div","qwrap");
+    var card = el("div","q");
+    card.appendChild(el("div","score", d.right + " / " + d.qs.length));
+    var b1 = el("button","btn primary","再来一轮"); b1.style.marginTop="14px";
+    b1.onclick = function(){ startDict(unitByN(state.unit)); };
+    var b2 = el("button","btn","回到单元"); b2.style.marginTop="10px";
+    b2.onclick = function(){ state.view="unit"; render(); };
+    card.appendChild(b1); card.appendChild(b2);
+    wrap.appendChild(card); app.appendChild(wrap);
+  }
+
+  /* ---------- router ---------- */
+  function render(){
+    renderUnits();
+    if(state.view === "list") return viewList();
+    if(state.view === "quiz") return renderQuiz();
+    if(state.view === "dict") return renderDict();
+    viewUnit();
+  }
+
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){ var s = document.querySelector(".study"); if(s){ s.remove(); state.view="unit"; render(); } }
+    if(state.view === "study" && (e.key === " " || e.key === "Enter")){
+      e.preventDefault(); state.flipped = !state.flipped; renderStudy();
+    }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
